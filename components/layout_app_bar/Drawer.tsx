@@ -1,18 +1,17 @@
-import React from 'react';
-import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
-import ListMenu from './ListMenu';
+import React from "react";
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import ListMenu from "./ListMenu";
 
 function drawer({...props}) {
-    const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent,) => {
-        if (event.type === 'keydown' &&
-            ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+    const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent, ) => {
+        if (event.type === "keydown" &&
+            ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")) {
             return;
         }
 
         props.setOpen(open);
     };
-
 
     return (
         <div>

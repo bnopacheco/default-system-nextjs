@@ -1,5 +1,3 @@
-import React from 'react'
-import Layout from '../components/layout_app_bar/LayoutAppBar'
+import React from "react";
 
-export default () => <Layout>Teste de conteúdo</Layout>
-
+export default () => <>Teste de conteúdo</>;

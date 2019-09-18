@@ -26,7 +26,6 @@ function LayoutDrawer({ ...props }) {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
       <AppBarLayout open={open} handleDrawerOpen={handleDrawerOpen}/>
 
       <Drawer variant="permanent" 
