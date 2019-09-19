@@ -3,27 +3,28 @@ import User from "../user.model";
 export default class UserBuilder {
 
     public static builder() {
-        return new UserBuilder();
+        this.user = new User();
+        return this;
     }
 
-    private user: User;
-
-    public name(name: string) {
+    public static setName(name: string) {
         this.user.name = name;
         return this;
     }
 
-    public password(password: string) {
+    public static setPassword(password: string) {
         this.user.password = password;
         return this;
     }
 
-    public email(email: string) {
+    public static setEmail(email: string) {
         this.user.email = email;
         return this;
     }
 
-    public build() {
+    public static build() {
         return this.user;
     }
+
+    private static user: User;
 }
