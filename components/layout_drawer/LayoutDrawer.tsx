@@ -10,7 +10,6 @@ import useStyles from './styles/layoutStyles';
 import ListMenu from './styles/ListMenu';
 import AppBarLayout from './AppBarLayout';
 
-
 function LayoutDrawer({ ...props }) {
   const theme = useTheme();
   const classes = useStyles(theme);
@@ -28,9 +27,9 @@ function LayoutDrawer({ ...props }) {
     <div className={classes.root}>
       <AppBarLayout open={open} handleDrawerOpen={handleDrawerOpen}/>
 
-      <Drawer variant="permanent" 
+      <Drawer variant='permanent' 
         className={clsx(classes.drawer, { [classes.drawerOpen]: open, [classes.drawerClose]: !open, })}
-        classes={{ paper: clsx({ [classes.drawerOpen]: open, [classes.drawerClose]: !open, }), }} 
+        classes={{ paper: clsx({ [classes.drawerOpen]: open, [classes.drawerClose]: !open, }), }}
         open={open} >
 
         <div className={classes.toolbar}>

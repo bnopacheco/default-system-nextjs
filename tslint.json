@@ -5,7 +5,7 @@
     "rules": {
       "quotemark": [
         true,
-        "double"
+        "single"
       ],
       "ordered-imports": false,
       "object-literal-sort-keys": false,

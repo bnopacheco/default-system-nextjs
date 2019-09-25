@@ -18,9 +18,9 @@ function ListMenu() {
             <ListItemIcon><MailIcon /></ListItemIcon>
             <ListItemText primary={'Send email'} />
           </ListItem>
-          
+
       </List>
-    )
+    );
 }
 
 export default ListMenu;

@@ -1,6 +1,6 @@
-import * as im from "immutable";
-import UserBuilder from "../../models/builders/UserBuilder";
-import { USER_ACTION } from "../actionsType";
+import * as im from 'immutable';
+import UserBuilder from '../../models/builders/UserBuilder';
+import { USER_ACTION } from '../actionsType';
 
 const initialState = im.Map({ user: UserBuilder.builder().build() });
 
