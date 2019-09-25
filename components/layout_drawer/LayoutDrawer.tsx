@@ -27,7 +27,7 @@ function LayoutDrawer({ ...props }) {
     <div className={classes.root}>
       <AppBarLayout open={open} handleDrawerOpen={handleDrawerOpen}/>
 
-      <Drawer variant='permanent' 
+      <Drawer variant='permanent'
         className={clsx(classes.drawer, { [classes.drawerOpen]: open, [classes.drawerClose]: !open, })}
         classes={{ paper: clsx({ [classes.drawerOpen]: open, [classes.drawerClose]: !open, }), }}
         open={open} >

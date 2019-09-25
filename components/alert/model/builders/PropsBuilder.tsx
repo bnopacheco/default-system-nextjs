@@ -6,7 +6,7 @@ export default class PropsBuilder {
     public static props: Props;
 
     public static Builder() {
-        this.props = new Props;
+        this.props = new Props();
         return this;
     }
 
