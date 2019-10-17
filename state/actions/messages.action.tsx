@@ -1,5 +1,5 @@
-import { MESSAGES } from '../actionsType';
 import { Message } from '../../components/alert/model/Message';
+import { MESSAGES } from '../actionsConstants';
 
 export function messagesAction(messages: Message[]) {
   return (dispatch: any) => {

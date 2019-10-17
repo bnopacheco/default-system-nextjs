@@ -1,7 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
 import { Map } from 'immutable';
+import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import logger from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
 import reducers from './reducers/reducers';
 
 const initial = Map();

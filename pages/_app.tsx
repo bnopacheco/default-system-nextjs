@@ -1,18 +1,17 @@
-import React from 'react';
-import Layout from '../components/layout_app_bar/LayoutAppBar';
-import { ThemeProvider } from '@material-ui/styles';
 import { CssBaseline } from '@material-ui/core';
-import theme from '../theme/Theme';
-import { Provider } from 'react-redux';
-import withRedux from 'next-redux-wrapper';
+import { ThemeProvider } from '@material-ui/styles';
 import { fromJS } from 'immutable';
-import { initialStore } from '../state/store';
-import { userAction } from '../state/actions/user.action';
-import UserBuilder from '../models/builders/UserBuilder';
-import { messagesAction } from '../state/actions/messages.action';
-import { loadingsAction } from '../state/actions/loading.action';
-import Loading from '../components/loading/Loading';
+import withRedux from 'next-redux-wrapper';
+import React from 'react';
+import { Provider } from 'react-redux';
 import MessageComponent from '../components/alert/MessageComponent';
+import Layout from '../components/layout_app_bar/LayoutAppBar';
+import Loading from '../components/loading/Loading';
+import UserBuilder from '../models/builders/UserBuilder';
+import { loadingsAction } from '../state/actions/loading.action';
+import { messagesAction } from '../state/actions/messages.action';
+import { initialStore } from '../state/store';
+import theme from '../theme/Theme';
 
 const MyApp = ({ Component, pageProps, store }) => {
 
@@ -28,24 +27,19 @@ const MyApp = ({ Component, pageProps, store }) => {
             <ThemeProvider theme={theme}>
                 {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
                 <CssBaseline />
-                <Layout>
+                <Component {...pageProps} />
+                {/* <Layout>
                     <Loading />
                     <MessageComponent />
                     <Component {...pageProps} />
-                </Layout>
+                </Layout> */}
             </ThemeProvider>
         </Provider>
     );
 };
 
 MyApp.getInitialProps = async ({ Component, ctx }) => {
-    // we can dispatch from here too
-    ctx.store.dispatch(userAction(UserBuilder.builder().build()));
-
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
-    ctx.store.dispatch(messagesAction([]));
-    ctx.store.dispatch(loadingsAction(0));
-
     return { pageProps };
 };
 

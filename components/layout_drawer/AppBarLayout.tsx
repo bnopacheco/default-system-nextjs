@@ -1,11 +1,11 @@
 import AppBar from '@material-ui/core/AppBar';
+import IconButton from '@material-ui/core/IconButton';
+import { useTheme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
-import { useTheme } from '@material-ui/core/styles';
-import useStyles from './styles/appBarLayoutStyles';
-import IconButton from '@material-ui/core/IconButton';
 import clsx from 'clsx';
+import useStyles from './styles/appBarLayoutStyles';
 
 function AppBarLayout({...props}) {
 

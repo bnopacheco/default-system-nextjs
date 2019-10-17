@@ -1,13 +1,17 @@
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    paper: {
+    box: {
       position: 'absolute',
-      width: 400,
+      width:  '100%',
+      height:  '100%',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     loading: {
       'z-index': '1700 !important',
-    }
+    },
   }),
 );

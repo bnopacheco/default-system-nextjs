@@ -1,11 +1,17 @@
 import UserBuilder from '../models/builders/UserBuilder';
-import { userAction } from '../state/actions/user.action';
+import { authenticateAction } from '../state/actions/authAction';
 
 export default class UserService {
 
-    public static findUser(id: number) {
+    public static login(email: string, password: string) {
         return (dispatch: any) => {
-            dispatch(userAction(UserBuilder.builder().setName('John').setEmail('john@mail.com').build()));
-          };
+            dispatch(authenticateAction(UserBuilder.builder().setName('John').setEmail(email).build()));
+        };
+    }
+
+    public static loadUser() {
+        return (dispatch: any) => {
+            dispatch(authenticateAction(UserBuilder.builder().setName('username').setEmail('user@email.com').build()));
+        };
     }
 }

@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { LOADING } from '../actionsType';
+import { LOADING } from '../actionsConstants';
 
 const initialState = Map({ activeLoadings: 0 });
 

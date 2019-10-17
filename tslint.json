@@ -7,9 +7,13 @@
         true,
         "single"
       ],
-      "ordered-imports": false,
+      "ordered-imports": true,
       "object-literal-sort-keys": false,
       "trailing-comma": false,
+      "no-unused-expression": false,
+      "interface-name": false,
+      "object-literal-key-quotes": false,
+      "no-empty": false,
       "max-line-length": [
         false,
         0

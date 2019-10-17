@@ -2,13 +2,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
-import { messagesAction } from '../../state/actions/messages.action';
-import MessageBuilder from '../alert/model/builders/MessageBuilder';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { connect } from 'react-redux';
 import User from '../../models/user.model';
 import { loadingsAction } from '../../state/actions/loading.action';
+import { messagesAction } from '../../state/actions/messages.action';
+import MessageBuilder from '../alert/model/builders/MessageBuilder';
 
 function ListMenu({...props}) {
     return (
@@ -29,7 +29,7 @@ function ListMenu({...props}) {
 }
 
 function mapStateToProps(state: any) {
-  const user: User = state.get('user').toJS().user;
+  const user: User = state.get('authReducer').toJS().user;
   return { user };
 }
 
@@ -46,7 +46,6 @@ function mapDispatchToProps(dispatch: any) {
           ); });
       },
       incrementLoading: () => {
-        console.log('Incrementado loading');
         dispatch(() => {
           dispatch(loadingsAction(1));
           setTimeout(() => {

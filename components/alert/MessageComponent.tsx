@@ -1,12 +1,12 @@
-import React from 'react';
-import SnackbarContentWrapper from './SnackBarContentWrapper';
-import Props from './model/Props';
-import { Message } from './model/Message';
-import PropsBuilder from './model/builders/PropsBuilder';
-import { connect } from 'react-redux';
-import { useStyles } from './styles/MessageComponentStyle';
-import { messagesAction } from '../../state/actions/messages.action';
 import useTheme from '@material-ui/styles/useTheme';
+import React from 'react';
+import { connect } from 'react-redux';
+import { messagesAction } from '../../state/actions/messages.action';
+import PropsBuilder from './model/builders/PropsBuilder';
+import { Message } from './model/Message';
+import Props from './model/Props';
+import SnackbarContentWrapper from './SnackBarContentWrapper';
+import { useStyles } from './styles/MessageComponentStyle';
 
 function MessageComponent({ ...props }) {
     const theme = useTheme();
@@ -17,6 +17,15 @@ function MessageComponent({ ...props }) {
         if (props.messages) {
             setState(
                 props.messages.map((message: Message, index: number) => {
+
+                    if (message.secondsTimeout !== 0) {
+                        setTimeout(() => {
+                            props.updateMessages(
+                                props.messages.filter((messageFiltered: Message, i: number) => i !== index && messageFiltered)
+                            );
+                        }, (message.secondsTimeout * 1000));
+                    }
+
                     return PropsBuilder.Builder()
                         .setVariant(message.variant)
                         .setMessage(message.message)
@@ -55,7 +64,7 @@ function MessageComponent({ ...props }) {
 }
 
 function mapStateToProps(state: any) {
-    const messages: Message[] = state.get('messages').toJS().messages;
+    const messages: Message[] = state.get('messagesReducer').toJS().messages;
     return { messages };
 }
 

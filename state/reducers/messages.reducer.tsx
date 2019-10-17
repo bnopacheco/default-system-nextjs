@@ -1,5 +1,5 @@
-import { MESSAGES } from '../actionsType';
 import * as im from 'immutable';
+import { MESSAGES } from '../actionsConstants';
 
 const initialState = im.fromJS({ messages: [] });
 

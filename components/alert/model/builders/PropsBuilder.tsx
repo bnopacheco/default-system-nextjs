@@ -1,5 +1,5 @@
-import Props from '../Props';
 import { variantIcon } from '../../SnackContentProps';
+import Props from '../Props';
 
 export default class PropsBuilder {
 

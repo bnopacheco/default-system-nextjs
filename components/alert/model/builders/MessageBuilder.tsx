@@ -1,5 +1,5 @@
-import { Message } from '../Message';
 import { variantIcon } from '../../SnackContentProps';
+import { Message } from '../Message';
 
 export default class MessageBuilder {
 
@@ -17,6 +17,11 @@ export default class MessageBuilder {
 
     public static setVariant(variant: keyof typeof variantIcon) {
         this.message.variant = variant;
+        return this;
+    }
+
+    public static setSecondsTimeout(seconds: number) {
+        this.message.secondsTimeout = seconds;
         return this;
     }
 
