@@ -1,4 +1,7 @@
+import Role from '../role';
+import { roleTypes } from '../roles.types';
 import User from '../user.model';
+import RoleBuilder from './RoleBuilder';
 
 export default class UserBuilder {
 
@@ -19,6 +22,31 @@ export default class UserBuilder {
 
     public static setEmail(email: string) {
         this.user.email = email;
+        return this;
+    }
+
+    public static setRole(role: keyof typeof roleTypes) {
+
+        if (!this.user.roles) {
+            this.user.roles = [];
+        }
+
+        this.user.roles.push(RoleBuilder.builder().setName(role).build());
+        return this;
+    }
+
+    public static setRoles(roles: Role[]) {
+        this.user.roles = roles;
+        return this;
+    }
+
+    public static setToken(token: string) {
+        this.user.token = token;
+        return this;
+    }
+
+    public static setImage(image: string) {
+        this.user.image = image;
         return this;
     }
 

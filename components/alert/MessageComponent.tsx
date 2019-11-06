@@ -9,8 +9,7 @@ import SnackbarContentWrapper from './SnackBarContentWrapper';
 import { useStyles } from './styles/MessageComponentStyle';
 
 function MessageComponent({ ...props }) {
-    const theme = useTheme();
-    const classes = useStyles(theme);
+    const classes = useStyles(useTheme());
     const [state, setState] = React.useState<Props[]>([]);
 
     React.useEffect(() => {

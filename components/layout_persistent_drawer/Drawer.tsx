@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import React from 'react';
-import ListMenu from './ListMenu';
+import ListMenu from '../menu_default/ListMenu';
 
 function drawer({...props}) {
     const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent, ) => {

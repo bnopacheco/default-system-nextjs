@@ -8,9 +8,7 @@ import clsx from 'clsx';
 import useStyles from './styles/appBarLayoutStyles';
 
 function AppBarLayout({...props}) {
-
-    const theme = useTheme();
-    const classes = useStyles(theme);
+    const classes = useStyles(useTheme());
 
     return (
         <AppBar position='fixed' className={clsx(classes.appBar, { [classes.appBarShift]: props.open, })} >

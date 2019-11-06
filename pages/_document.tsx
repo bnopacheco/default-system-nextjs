@@ -1,4 +1,5 @@
 import { ServerStyleSheets } from '@material-ui/styles';
+import nextCookie from 'next-cookies';
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import theme from '../theme/Theme';
@@ -19,6 +20,7 @@ class DocumentDefault extends Document {
             rel='stylesheet'
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
           />
+          <link rel='icon' type='image/x-icon' href='/static/favicon.ico' />
         </Head>
         <body>
           <Main />
@@ -30,6 +32,7 @@ class DocumentDefault extends Document {
 }
 
 DocumentDefault.getInitialProps = async (ctx) => {
+
   // Render app and page and get the context of the page with collected side effects.
   const sheets = new ServerStyleSheets();
   const originalRenderPage = ctx.renderPage;

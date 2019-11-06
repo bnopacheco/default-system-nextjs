@@ -5,14 +5,17 @@ import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import clsx from 'clsx';
+import nextCookie from 'next-cookies';
+import Router from 'next/router';
 import React from 'react';
+import MessageComponent from '../alert/MessageComponent';
+import Loading from '../loading/Loading';
+import ListMenu from '../menu_default/ListMenu';
 import AppBarLayout from './AppBarLayout';
 import useStyles from './styles/layoutStyles';
-import ListMenu from './styles/ListMenu';
 
-function LayoutDrawer({ ...props }) {
-  const theme = useTheme();
-  const classes = useStyles(theme);
+function LayoutMiniVariantDrawer({ ...props }) {
+  const classes = useStyles(useTheme());
   const [open, setOpen] = React.useState(false);
 
   function handleDrawerOpen() {
@@ -44,6 +47,8 @@ function LayoutDrawer({ ...props }) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        <Loading />
+        <MessageComponent />
         {props.children}
       </main>
 
@@ -51,4 +56,4 @@ function LayoutDrawer({ ...props }) {
   );
 }
 
-export default LayoutDrawer;
+export default LayoutMiniVariantDrawer;

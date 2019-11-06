@@ -1,9 +1,8 @@
+import { Avatar } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import { useTheme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -13,15 +12,21 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
+import Router from 'next/router';
 import React from 'react';
+import { connect } from 'react-redux';
+import User from '../../models/user.model';
+import { auth, withAuthSync } from '../../utils/auth';
 import MessageComponent from '../alert/MessageComponent';
+import Loading from '../loading/Loading';
 import Drawer from './Drawer';
 import MenuAppBar from './MenuAppBar';
 import MobileMenu from './MobileMenu';
 import useStyles from './styles/layoutAppBarStyles';
 
-function LayoutAppBar({...props}) {
+function LayoutPersistentDrawer({...props}) {
     const classes = useStyles(useTheme());
+    const user: User = props.user;
 
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -86,13 +91,13 @@ function LayoutAppBar({...props}) {
 
                         <div className={classes.sectionDesktop}>
 
-                            <IconButton aria-label='show 4 new mails' color='inherit'>
+                            <IconButton aria-label='show 4 new mails' color='inherit' className={classes.appBarButton}>
                                 <Badge badgeContent={4} color='secondary'>
                                     <MailIcon />
                                 </Badge>
                             </IconButton>
 
-                            <IconButton aria-label='show 17 new notifications' color='inherit'>
+                            <IconButton aria-label='show 17 new notifications' color='inherit' className={classes.appBarButton}>
                                 <Badge badgeContent={17} color='secondary'>
                                     <NotificationsIcon />
                                 </Badge>
@@ -104,8 +109,16 @@ function LayoutAppBar({...props}) {
                                 aria-controls={menuId}
                                 aria-haspopup='true'
                                 onClick={handleProfileMenuOpen}
-                                color='inherit'>
-                                <AccountCircle />
+                                color='inherit'
+                                className={classes.appBarButton}>
+                                {
+                                    (user && user.image) ?
+                                    <Avatar alt={props.user.name} src={props.user.image} className={classes.avatar} /> :
+                                    <Avatar className={classes.avatar}>{props.user.name.substring(0, 1).toUpperCase()}</Avatar>
+                                }
+                                {
+                                    !user && <AccountCircle />
+                                }
                             </IconButton>
 
                         </div>
@@ -140,10 +153,21 @@ function LayoutAppBar({...props}) {
 
             </div>
             <div style={{padding: '1em'}}>
+                <Loading />
+                <MessageComponent />
                 {props.children}
             </div>
         </>
     );
 }
 
-export default LayoutAppBar;
+function mapStateToProps(state: any) {
+    const user: User = state.get('authReducer').toJS().user;
+    return { user };
+}
+
+function mapDispatchToProps(dispatch: any) {
+    return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutPersistentDrawer);

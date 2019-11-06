@@ -1,4 +1,4 @@
-import { fade, makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import { createStyles, fade, makeStyles, Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -62,6 +62,15 @@ const useStyles = makeStyles((theme: Theme) =>
         display: 'none',
       },
     },
+    avatar: {
+      height: '30px',
+      width: '30px',
+      fontSize: '1rem',
+    },
+    appBarButton: {
+      height: '2.3em',
+      width: '2.3em',
+    }
   }),
 );
 
