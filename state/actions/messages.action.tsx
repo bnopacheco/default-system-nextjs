@@ -1,4 +1,4 @@
-import { Message } from '../../components/alert/model/Message';
+import { Message } from '../../components/message/model/Message';
 import { MESSAGES } from '../actionsConstants';
 
 export function messagesAction(messages: Message[]) {

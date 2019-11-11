@@ -5,17 +5,20 @@ import IconButton from '@material-ui/core/IconButton';
 import { useTheme } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import clsx from 'clsx';
-import nextCookie from 'next-cookies';
-import Router from 'next/router';
 import React from 'react';
-import MessageComponent from '../alert/MessageComponent';
+import { connect } from 'react-redux';
+import User from '../../models/user.model';
+import UserService from '../../services/user.service';
 import Loading from '../loading/Loading';
+import LoadingBox from '../loading/LoadingBox';
 import ListMenu from '../menu_default/ListMenu';
+import MessageComponent from '../message/MessageComponent';
 import AppBarLayout from './AppBarLayout';
 import useStyles from './styles/layoutStyles';
 
 function LayoutMiniVariantDrawer({ ...props }) {
   const classes = useStyles(useTheme());
+  const user: User = props.user;
   const [open, setOpen] = React.useState(false);
 
   function handleDrawerOpen() {
@@ -26,6 +29,7 @@ function LayoutMiniVariantDrawer({ ...props }) {
     setOpen(false);
   }
 
+  // user.id === undefined ? <LoadingBox /> :
   return (
     <div className={classes.root}>
       <AppBarLayout open={open} handleDrawerOpen={handleDrawerOpen}/>
@@ -37,7 +41,7 @@ function LayoutMiniVariantDrawer({ ...props }) {
 
         <div className={classes.toolbar}>
           <IconButton onClick={handleDrawerClose}>
-            { <ChevronLeftIcon /> }
+            <ChevronLeftIcon />
           </IconButton>
         </div>
 
@@ -56,4 +60,17 @@ function LayoutMiniVariantDrawer({ ...props }) {
   );
 }
 
-export default LayoutMiniVariantDrawer;
+function mapStateToProps(state: any) {
+  const user: User = state.get('authReducer').toJS().user;
+  return { user };
+}
+
+function mapDispatchToProps(dispatch: any) {
+  return {
+      logout : () => {
+        dispatch(UserService.logout());
+      }
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LayoutMiniVariantDrawer);

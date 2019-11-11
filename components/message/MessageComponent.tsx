@@ -18,6 +18,9 @@ function MessageComponent({ ...props }) {
                 props.messages.map((message: Message, index: number) => {
 
                     if (message.secondsTimeout !== 0) {
+                        if (!message.secondsTimeout) {
+                            message.secondsTimeout = 5;
+                        }
                         setTimeout(() => {
                             props.updateMessages(
                                 props.messages.filter((messageFiltered: Message, i: number) => i !== index && messageFiltered)

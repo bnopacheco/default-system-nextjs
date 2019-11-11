@@ -12,13 +12,13 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
-import Router from 'next/router';
 import React from 'react';
 import { connect } from 'react-redux';
 import User from '../../models/user.model';
-import { auth, withAuthSync } from '../../utils/auth';
-import MessageComponent from '../alert/MessageComponent';
+import UserService from '../../services/user.service';
 import Loading from '../loading/Loading';
+import LoadingBox from '../loading/LoadingBox';
+import MessageComponent from '../message/MessageComponent';
 import Drawer from './Drawer';
 import MenuAppBar from './MenuAppBar';
 import MobileMenu from './MobileMenu';
@@ -56,6 +56,7 @@ function LayoutPersistentDrawer({...props}) {
 
     const [open, setOpen] = React.useState(false);
 
+    // user.id === undefined ? <LoadingBox /> :
     return (
         <>
             <div className={classes.grow}>
@@ -111,13 +112,16 @@ function LayoutPersistentDrawer({...props}) {
                                 onClick={handleProfileMenuOpen}
                                 color='inherit'
                                 className={classes.appBarButton}>
+
                                 {
-                                    (user && user.image) ?
-                                    <Avatar alt={props.user.name} src={props.user.image} className={classes.avatar} /> :
-                                    <Avatar className={classes.avatar}>{props.user.name.substring(0, 1).toUpperCase()}</Avatar>
-                                }
-                                {
-                                    !user && <AccountCircle />
+                                    (!user || !user.name) ? <AccountCircle /> :
+                                    <>
+                                        {
+                                            (user && user.image) ?
+                                            <Avatar alt={user.name} src={user.image} className={classes.avatar} /> :
+                                            <Avatar className={classes.avatar}>{user.name.substring(0, 1).toUpperCase()}</Avatar>
+                                        }
+                                    </>
                                 }
                             </IconButton>
 
@@ -147,7 +151,9 @@ function LayoutPersistentDrawer({...props}) {
                 <MenuAppBar anchorEl={anchorEl}
                     menuId={menuId}
                     isMenuOpen={isMenuOpen}
-                    handleMenuClose={handleMenuClose}/>
+                    handleMenuClose={handleMenuClose}
+                    user={user}
+                    logout={props.logout}/>
 
                 <Drawer open={open} setOpen={setOpen} />
 
@@ -167,7 +173,11 @@ function mapStateToProps(state: any) {
 }
 
 function mapDispatchToProps(dispatch: any) {
-    return {};
+    return {
+        logout : () => {
+          dispatch(UserService.logout());
+        }
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LayoutPersistentDrawer);

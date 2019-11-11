@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import User from '../../models/user.model';
 import { loadingsAction } from '../../state/actions/loading.action';
 import { messagesAction } from '../../state/actions/messages.action';
-import MessageBuilder from '../alert/model/builders/MessageBuilder';
+import MessageBuilder from '../message/model/builders/MessageBuilder';
 
 function Home({...props}) {
 

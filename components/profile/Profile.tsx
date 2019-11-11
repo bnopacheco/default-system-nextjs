@@ -1,11 +1,12 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import useTheme from '@material-ui/styles/useTheme';
+import { mdiAccountCardDetails } from '@mdi/js';
+import Icon from '@mdi/react';
 import React from 'react';
 import { connect } from 'react-redux';
 import { ADMIN, USER } from '../../models/roles.types';
 import User from '../../models/user.model';
-import UserService from '../../services/user.service';
 
 const useStyles = makeStyles({
     card: {
@@ -21,8 +22,9 @@ function Profile({...props}) {
     return (
             <Card className={classes.card}>
                 <CardContent>
-                    <Typography gutterBottom variant='h5' component='h2'>
-                        Profile
+                    <Typography gutterBottom variant='h5' component='h2' >
+                        <Icon path={mdiAccountCardDetails} title='User Profile' size={1} color='grey'/>
+                        {` Profile`}
                     </Typography>
                     <Typography variant='body2' color='textSecondary' component='p'>
                         Usuário: {user.name}

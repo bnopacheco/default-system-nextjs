@@ -1,13 +1,10 @@
-import { LinearProgress } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import { useTheme } from '@material-ui/styles';
 import React from 'react';
 import { connect } from 'react-redux';
+import LoadingBox from './LoadingBox';
 import { useStyles } from './styles/LoadingStyle';
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+import { CircularProgress, Typography } from '@material-ui/core';
 
 function Loading({ ...props }) {
   const classes = useStyles(useTheme());
@@ -26,9 +23,10 @@ function Loading({ ...props }) {
           aria-describedby='simple-modal-description'
           open={open} className={classes.loading}>
 
-      <div className={ classes.box }>
-        <LinearProgress style={{width: '50%'}}/>
-      </div>
+        <div className={classes.box}>
+            <CircularProgress size='6em' />
+            <Typography style={{ padding: '1em' }} >Loading...</Typography>
+        </div>
 
     </Modal>
   );

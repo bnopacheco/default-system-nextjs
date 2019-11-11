@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import CompanyBuilder from '../models/builders/CompanyBuilder';
 import RoleBuilder from '../models/builders/RoleBuilder';
 import UserBuilder from '../models/builders/UserBuilder';
 import { USER } from '../models/roles.types';
@@ -11,12 +12,18 @@ export default class UserService {
     public static login(email: string, password: string, rememberme: boolean, redirect: string) {
         return (dispatch: any) => {
 
-            // fetch >> call api, get response, set user and toekn in storage cookies.
+            // fetch >> call api, get response, set user and token in storage cookies.
+
+            const company = CompanyBuilder.builder().setId(1).setName('Empresa X').build();
+
             const user: User = UserBuilder.builder()
+                .setId(1)
                 .setName('User Name')
                 .setEmail(email)
+                .setImage('/static/avatar.png')
                 .setPassword(password)
                 .setRole(USER)
+                .setCompany(company)
                 .setToken(btoa(password)).build();
             // fetch end
 

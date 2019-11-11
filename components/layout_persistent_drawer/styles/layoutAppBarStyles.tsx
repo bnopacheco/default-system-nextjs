@@ -70,6 +70,11 @@ const useStyles = makeStyles((theme: Theme) =>
     appBarButton: {
       height: '2.3em',
       width: '2.3em',
+    },
+    cardAvatar: {
+      display: 'flex',
+      width: '100%',
+justifyContent: 'center',
     }
   }),
 );

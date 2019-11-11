@@ -1,3 +1,4 @@
+import Company from '../company';
 import Role from '../role';
 import { roleTypes } from '../roles.types';
 import User from '../user.model';
@@ -7,6 +8,11 @@ export default class UserBuilder {
 
     public static builder() {
         this.user = new User();
+        return this;
+    }
+
+    public static setId(id: number) {
+        this.user.id = id;
         return this;
     }
 
@@ -47,6 +53,11 @@ export default class UserBuilder {
 
     public static setImage(image: string) {
         this.user.image = image;
+        return this;
+    }
+
+    public static setCompany(company: Company) {
+        this.user.company = company;
         return this;
     }
 

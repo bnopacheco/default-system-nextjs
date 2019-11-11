@@ -1,4 +1,5 @@
 import * as im from 'immutable';
+import CompanyBuilder from '../../models/builders/CompanyBuilder';
 import RoleBuilder from '../../models/builders/RoleBuilder';
 import UserBuilder from '../../models/builders/UserBuilder';
 import Role from '../../models/role';
@@ -27,12 +28,21 @@ if (typeof localStorage !== 'undefined') {
             }
         });
 
+        const company = CompanyBuilder.builder()
+                            .setId(userDecodedCookie.company.id)
+                            .setName(userDecodedCookie.company.name)
+                            .build();
+
         const user: User = UserBuilder.builder()
+            .setId(userDecodedCookie.id)
             .setName(userDecodedCookie.name)
             .setEmail(userDecodedCookie.email)
+            .setImage(userDecodedCookie.image)
             .setRoles(roles)
             .setToken(userDecodedCookie.token)
+            .setCompany(company)
             .build();
+
         initialState = im.Map({user});
     } else {
         initialState = im.Map({user: new User()});
@@ -62,7 +72,7 @@ const authReducer = (state = initialState, action: any) => {
            });
 
        default:
-           return initialState;
+return initialState;
    }
 };
 
