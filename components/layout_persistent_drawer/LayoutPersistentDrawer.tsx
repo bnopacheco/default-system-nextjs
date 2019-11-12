@@ -114,14 +114,17 @@ function LayoutPersistentDrawer({...props}) {
                                 className={classes.appBarButton}>
 
                                 {
-                                    (!user || !user.name) ? <AccountCircle /> :
-                                    <>
-                                        {
-                                            (user && user.image) ?
-                                            <Avatar alt={user.name} src={user.image} className={classes.avatar} /> :
-                                            <Avatar className={classes.avatar}>{user.name.substring(0, 1).toUpperCase()}</Avatar>
-                                        }
-                                    </>
+                                    (!user || !user.name) && <AccountCircle />
+                                }
+
+                                {
+                                    (user && user.image) &&
+                                    <Avatar alt={user.name} src={user.image} className={classes.avatar} />
+                                }
+
+                                {
+                                    (user && user.name && !user.image) &&
+                                    <Avatar className={classes.avatar}>{user.name.substring(0, 1).toUpperCase()}</Avatar>
                                 }
                             </IconButton>
 

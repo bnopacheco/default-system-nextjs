@@ -24,7 +24,7 @@ function menuAppBar({...props}) {
 
         <Grid container spacing={1} style={{padding: '1em', width: '25em'}} >
                 {
-                    (user && user.image) &&
+                    (user && user.image && user.name) &&
                     <Grid item xs={12} className={classes.cardAvatar}>
                         <Avatar alt={user.name} src={user.image} style={{height: '6em', width: '6em'}}/>
                     </Grid>
@@ -36,17 +36,17 @@ function menuAppBar({...props}) {
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    User: {user.name}
+                    User: {user.name ? user.name : ''}
                 </Typography>
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    Email: {user.email}
+                    Email: {user.email ? user.email : ''}
                 </Typography>
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    Company: {user.company ? user.company.name : ' - '}
+                    Company: {(user.company && user.company.name ) ? user.company.name : ''}
                 </Typography>
             </Grid>
         </Grid>
