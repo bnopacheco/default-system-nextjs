@@ -2,7 +2,6 @@ import Modal from '@material-ui/core/Modal';
 import { useTheme } from '@material-ui/styles';
 import React from 'react';
 import { connect } from 'react-redux';
-import LoadingBox from './LoadingBox';
 import { useStyles } from './styles/LoadingStyle';
 import { CircularProgress, Typography } from '@material-ui/core';
 

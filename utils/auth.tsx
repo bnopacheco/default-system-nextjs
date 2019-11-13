@@ -21,6 +21,8 @@ export const auth = (ctx: any) => {
     Router.push('/login');
   }
 
+  console.log(ctx);
+
   return token;
 };
 

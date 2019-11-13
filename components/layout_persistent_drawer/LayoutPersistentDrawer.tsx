@@ -17,7 +17,7 @@ import { connect } from 'react-redux';
 import User from '../../models/user.model';
 import UserService from '../../services/user.service';
 import Loading from '../loading/Loading';
-import LoadingBox from '../loading/LoadingBox';
+import LoadingApp from '../loading/LoadingApp';
 import MessageComponent from '../message/MessageComponent';
 import Drawer from './Drawer';
 import MenuAppBar from './MenuAppBar';
@@ -56,8 +56,8 @@ function LayoutPersistentDrawer({...props}) {
 
     const [open, setOpen] = React.useState(false);
 
-    // user.id === undefined ? <LoadingBox /> :
     return (
+        user === undefined || user.id === undefined ? <LoadingApp /> :
         <>
             <div className={classes.grow}>
                 <AppBar position='static'>
