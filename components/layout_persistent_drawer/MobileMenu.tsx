@@ -1,13 +1,15 @@
-import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
-import MenuItem from '@material-ui/core/MenuItem';
+import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function mobileMenu({...props}) {
+    const { t } = useTranslation();
     return (
         <Menu
             anchorEl={props.mobileMoreAnchorEl}
@@ -24,7 +26,7 @@ function mobileMenu({...props}) {
                         <MailIcon />
                     </Badge>
                 </IconButton>
-                <p>Messages</p>
+                <p>{t('app_bar_icons.messages')}</p>
             </MenuItem>
             <MenuItem>
                 <IconButton aria-label='show 11 new notifications' color='inherit'>
@@ -32,7 +34,7 @@ function mobileMenu({...props}) {
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>
-                <p>Notifications</p>
+                <p>{t('app_bar_icons.notifications')}</p>
             </MenuItem>
             <MenuItem onClick={props.handleProfileMenuOpen}>
                 <IconButton
@@ -43,7 +45,7 @@ function mobileMenu({...props}) {
                 >
                     <AccountCircle />
                 </IconButton>
-                <p>Profile</p>
+                <p>{t('app_bar_icons.profile')}</p>
             </MenuItem>
         </Menu>
     );

@@ -1,6 +1,7 @@
 import { CircularProgress, Typography } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import CompanyBuilder from '../../models/builders/CompanyBuilder';
 import RoleBuilder from '../../models/builders/RoleBuilder';
@@ -53,6 +54,7 @@ function loadingUserCookies(loadUser: (user: User) => void) {
 }
 
 function LoadingApp({ ...props }) {
+    const { t } = useTranslation();
     const classes = useStyles(useTheme());
 
     React.useEffect(() => {
@@ -62,7 +64,7 @@ function LoadingApp({ ...props }) {
     return (
         <div className={classes.box}>
             <CircularProgress size='6em' />
-            <Typography style={{ padding: '1em' }} >Loading...</Typography>
+            <Typography style={{ padding: '1em' }} >{t('loading')}</Typography>
         </div>
     );
 }

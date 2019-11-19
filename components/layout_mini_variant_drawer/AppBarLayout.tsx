@@ -5,10 +5,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
+import { useTranslation } from 'react-i18next';
 import useStyles from './styles/appBarLayoutStyles';
 
 function AppBarLayout({...props}) {
     const classes = useStyles(useTheme());
+    const { t } = useTranslation();
 
     return (
         <AppBar position='fixed' className={clsx(classes.appBar, { [classes.appBarShift]: props.open, })} >
@@ -21,7 +23,7 @@ function AppBarLayout({...props}) {
           </IconButton>
 
           <Typography variant='h6' noWrap>
-            Mini variant drawer
+            {t('app_bar.label')}
           </Typography>
 
         </Toolbar>

@@ -1,0 +1,32 @@
+{
+    "app_bar": {
+        "label": "Default NextJS Application",
+        "search": "Search..."
+    },
+    "profile": {
+        "profile": "Profile",
+        "user": "User: ",
+        "email": "Email: ",
+        "activeUser": "Active for USER",
+        "activeAdmin": "Active for ADMIN"
+    },
+    "app_bar_profile": {
+        "profile": "Profile",
+        "user": "User: ",
+        "email": "Email: ",
+        "company": "Company",
+        "logout": "Logout"
+    },
+    "menu": {
+        "home": "Home",
+        "mini_variant_drawer": "Mini Variant Drawer",
+        "persistent_drawer": "Persistent Drawer",
+        "logout": "Logout"
+    },
+    "app_bar_icons": {
+        "messages": "Messages",
+        "notifications": "Notifications",
+        "profile": "Profile"
+    },
+    "loading": "Loading..."
+}

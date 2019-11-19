@@ -4,11 +4,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { PowerSettingsNew } from '@material-ui/icons';
 import { useTheme } from '@material-ui/styles';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import User from '../../models/user.model';
 import useStyles from './styles/layoutAppBarStyles';
 
 function menuAppBar({...props}) {
-
+    const { t } = useTranslation();
     const classes = useStyles(useTheme());
 
     const user: User = props.user;
@@ -31,22 +32,22 @@ function menuAppBar({...props}) {
                 }
             <Grid item xs={12}>
                 <Typography gutterBottom variant='h5' component='h2'>
-                    Profile
+                    {t('app_bar_profile.profile')}
                 </Typography>
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    User: {user.name ? user.name : ''}
+                    {t('app_bar_profile.user')} {user.name ? user.name : ''}
                 </Typography>
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    Email: {user.email ? user.email : ''}
+                    {t('app_bar_profile.email')} {user.email ? user.email : ''}
                 </Typography>
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='body2' color='textSecondary' component='p'>
-                    Company: {(user.company && user.company.name ) ? user.company.name : ''}
+                    {t('app_bar_profile.company')} {(user.company && user.company.name ) ? user.company.name : ''}
                 </Typography>
             </Grid>
         </Grid>

@@ -1,11 +1,13 @@
+import { CircularProgress, Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import { useTheme } from '@material-ui/styles';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { useStyles } from './styles/LoadingStyle';
-import { CircularProgress, Typography } from '@material-ui/core';
 
 function Loading({ ...props }) {
+  const { t } = useTranslation();
   const classes = useStyles(useTheme());
   const [open, setOpen] = React.useState(false);
 
@@ -24,7 +26,7 @@ function Loading({ ...props }) {
 
         <div className={classes.box}>
             <CircularProgress size='6em' />
-            <Typography style={{ padding: '1em' }} >Loading...</Typography>
+            <Typography style={{ padding: '1em' }} >{t('loading')}</Typography>
         </div>
 
     </Modal>
