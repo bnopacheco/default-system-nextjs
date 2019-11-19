@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 function mobileMenu({...props}) {
     const { t } = useTranslation();
+
     return (
         <Menu
             anchorEl={props.mobileMoreAnchorEl}
@@ -47,7 +48,7 @@ function mobileMenu({...props}) {
                 </IconButton>
                 <p>{t('app_bar_icons.profile')}</p>
             </MenuItem>
-            <MenuItem onClick={props.handleProfileMenuOpen}>
+            <MenuItem onClick={props.handleLanguageOpen}>
                 <IconButton
                     aria-label='account of current user'
                     aria-controls='primary-search-account-menu'
@@ -55,7 +56,7 @@ function mobileMenu({...props}) {
                     color='inherit'>
                     <Language />
                 </IconButton>
-                <p>{props.language}</p>
+                <p>{props.language.toUpperCase()}</p>
             </MenuItem>
 
             {/* <Button color='inherit' onClick={props.handleLanguageOpen} style={{padding: '0em'}}>{props.language}</Button> */}
