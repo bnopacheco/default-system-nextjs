@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useTheme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { Language } from '@material-ui/icons';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -170,7 +171,9 @@ function LayoutPersistentDrawer({...props}) {
                     mobileMoreAnchorEl={mobileMoreAnchorEl}
                     mobileMenuId={mobileMenuId}
                     isMobileMenuOpen={isMobileMenuOpen}
-                    handleMobileMenuClose={handleMenuClose}/>
+                    handleMobileMenuClose={handleMenuClose}
+                    handleLanguageOpen={handleLanguageOpen}
+                    language={language}/>
 
                 <MenuAppBar anchorEl={anchorEl}
                     menuId={menuId}

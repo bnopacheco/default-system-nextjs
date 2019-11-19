@@ -1,8 +1,10 @@
+import { Button } from '@material-ui/core';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import Language from '@material-ui/icons/Language';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import React from 'react';
@@ -18,8 +20,7 @@ function mobileMenu({...props}) {
             keepMounted
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             open={props.isMobileMenuOpen}
-            onClose={props.handleMobileMenuClose}
-        >
+            onClose={props.handleMobileMenuClose} >
             <MenuItem>
                 <IconButton aria-label='show 4 new mails' color='inherit'>
                     <Badge badgeContent={4} color='secondary'>
@@ -41,12 +42,23 @@ function mobileMenu({...props}) {
                     aria-label='account of current user'
                     aria-controls='primary-search-account-menu'
                     aria-haspopup='true'
-                    color='inherit'
-                >
+                    color='inherit'>
                     <AccountCircle />
                 </IconButton>
                 <p>{t('app_bar_icons.profile')}</p>
             </MenuItem>
+            <MenuItem onClick={props.handleProfileMenuOpen}>
+                <IconButton
+                    aria-label='account of current user'
+                    aria-controls='primary-search-account-menu'
+                    aria-haspopup='true'
+                    color='inherit'>
+                    <Language />
+                </IconButton>
+                <p>{props.language}</p>
+            </MenuItem>
+
+            {/* <Button color='inherit' onClick={props.handleLanguageOpen} style={{padding: '0em'}}>{props.language}</Button> */}
         </Menu>
     );
 }
