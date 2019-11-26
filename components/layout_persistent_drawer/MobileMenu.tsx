@@ -58,8 +58,6 @@ function mobileMenu({...props}) {
                 </IconButton>
                 <p>{props.language.toUpperCase()}</p>
             </MenuItem>
-
-            {/* <Button color='inherit' onClick={props.handleLanguageOpen} style={{padding: '0em'}}>{props.language}</Button> */}
         </Menu>
     );
 }

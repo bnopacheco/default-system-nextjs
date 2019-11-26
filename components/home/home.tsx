@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import User from '../../models/user.model';
-import { loadingsAction } from '../../state/actions/loading.action';
+import { loadingsAction } from '../../state/actions/loadings';
 import { messagesAction } from '../../state/actions/messages.action';
 import MessageBuilder from '../message/model/builders/MessageBuilder';
 

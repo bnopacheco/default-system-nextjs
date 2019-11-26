@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import UserService from '../../services/user.service';
+import LoadingApp from '../loading/LoadingApp';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 function Copyright() {
     return (
         <Typography variant='body2' color='textSecondary' align='center'>
-            {`Copyright © ${<Link color='inherit' href='#'> Website </Link>} ${new Date().getFullYear()}.`}
+            {`Copyright © `} <Link color='inherit' href='#'> website </Link> {`${new Date().getFullYear()}.`}
         </Typography>
     );
 }
@@ -59,12 +60,14 @@ function Login({ ...props }) {
 
     useEffect(() => {
         const query: any = queryString.parse(window.location.search);
+        console.log(query)
         if (query.redirect) {
             setRedirect(redirect);
         }
     }, []);
 
     return (
+        props.loadingLogin ? <LoadingApp /> :
         <Container component='main' maxWidth='xs'>
             <CssBaseline />
             <div className={classes.paper}>
@@ -80,10 +83,10 @@ function Login({ ...props }) {
                         margin='normal'
                         required
                         fullWidth
-                        id='email'
-                        label='Email Address'
-                        name='email'
-                        autoComplete='email'
+                        id='username'
+                        label='Username'
+                        name='username'
+                        autoComplete='username'
                         autoFocus
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -142,8 +145,8 @@ function Login({ ...props }) {
 
 function mapStateToProps(state: any) {
     const isLoggedIn: boolean = state.get('authReducer').toJS().isLoggedIn;
-    const activeLoadings: number = state.get('loadingsReducer').toJS().activeLoadings;
-    return { activeLoadings, isLoggedIn };
+    const loadingLogin: boolean = state.get('loadingsReducer').toJS().loadingLogin;
+    return { loadingLogin, isLoggedIn };
 }
 
 function mapDispatchToProps(dispatch: any) {

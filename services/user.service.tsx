@@ -1,42 +1,60 @@
 import Router from 'next/router';
+import MessageBuilder from '../components/message/model/builders/MessageBuilder';
 import CompanyBuilder from '../models/builders/CompanyBuilder';
 import RoleBuilder from '../models/builders/RoleBuilder';
 import UserBuilder from '../models/builders/UserBuilder';
 import { USER } from '../models/roles.types';
 import User from '../models/user.model';
 import { authenticateAction, deAuthenticateAction } from '../state/actions/authAction';
+import { loadingsAction, loadingsLogin } from '../state/actions/loadings';
+import { messagesAction } from '../state/actions/messages.action';
 import { removeCookie, setCookie } from '../utils/cookie';
+import CustomFetch from './custom.fetch';
 
 export default class UserService {
 
-    public static login(email: string, password: string, rememberme: boolean, redirect: string) {
+    public static login(username: string, password: string, rememberme: boolean, redirect: string) {
         return (dispatch: any) => {
 
-            // fetch >> call api, get response, set user and token in storage cookies.
+            dispatch(loadingsLogin(true));
+            CustomFetch.get(`/users/${username}`).then((githubuser: any) => {
 
-            const company = CompanyBuilder.builder().setId(1).setName('Empresa X').build();
+                const company = CompanyBuilder.builder().setId(1).setName('Company Name').build();
 
-            const user: User = UserBuilder.builder()
+                const user: User = UserBuilder.builder()
                 .setId(1)
-                .setName('User Name')
-                .setEmail(email)
-                .setImage('/static/avatar.png')
+                .setName(githubuser.name)
+                .setEmail(githubuser.email)
+                .setImage(githubuser.avatar_url)
                 .setPassword(password)
                 .setRole(USER)
                 .setCompany(company)
-                .setToken(btoa(password)).build();
-            // fetch end
+                .setToken(btoa(githubuser.node_id)).build();
 
-            setCookie('user', btoa(JSON.stringify(user)), rememberme);
-            setCookie('token', user.token, rememberme);
-            window.localStorage.removeItem('logout');
-            dispatch(authenticateAction(user));
+                setCookie('user', btoa(JSON.stringify(user)), rememberme);
+                setCookie('token', user.token, rememberme);
+                window.localStorage.removeItem('logout');
+                dispatch(authenticateAction(user));
 
-            if (redirect) {
-                Router.push(redirect);
-            }
+                if (redirect) {
+                    Router.push(redirect);
+                }
+                Router.push('/index');
 
-            Router.push('/index');
+                // waiting two seconds during redirect, then close login load, but if redirected, login load will not be displayed
+                setTimeout(() => {dispatch(loadingsLogin(false)); }, 2000);
+            })
+            .catch((error: Error) => {
+                dispatch(loadingsLogin(false));
+                dispatch(
+                    messagesAction([
+                        MessageBuilder.builder()
+                            .setVariant('error')
+                            .setMessage(error.message)
+                            .build()
+                    ])
+                );
+            });
         };
     }
 
@@ -46,7 +64,6 @@ export default class UserService {
             removeCookie('token');
 
             if (window) {
-                // to support logging out from all windows
                 window.localStorage.setItem('logout', Date.now().toString());
             }
 

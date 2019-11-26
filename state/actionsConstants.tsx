@@ -1,5 +1,6 @@
 export const MESSAGES = 'LOADINGS';
 export const LOADING = 'LOADING';
+export const LOADING_LOGIN = 'LOADING_LOGIN';
 export const AUTHENTICATE = 'AUTHENTICATE';
 export const DEAUTHENTICATE = 'DEAUTHENTICATE';
 export const RESTORE_AUTH_STATE  = 'RESTORE_AUTH_STATE';
