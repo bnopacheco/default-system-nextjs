@@ -1,7 +1,10 @@
 import Company from '../company';
+import Module from '../module';
+import { moduleTypes } from '../modules.type';
 import Role from '../role';
 import { roleTypes } from '../roles.types';
 import User from '../user.model';
+import ModuleBuilder from './ModuleBuilder';
 import RoleBuilder from './RoleBuilder';
 
 export default class UserBuilder {
@@ -31,7 +34,7 @@ export default class UserBuilder {
         return this;
     }
 
-    public static setRole(role: keyof typeof roleTypes) {
+    public static addRole(role: keyof typeof roleTypes) {
 
         if (!this.user.roles) {
             this.user.roles = [];
@@ -41,8 +44,23 @@ export default class UserBuilder {
         return this;
     }
 
+    public static addModule(module: keyof typeof moduleTypes) {
+
+        if (!this.user.modules) {
+            this.user.modules = [];
+        }
+
+        this.user.modules.push(ModuleBuilder.builder().setName(module).build());
+        return this;
+    }
+
     public static setRoles(roles: Role[]) {
         this.user.roles = roles;
+        return this;
+    }
+
+    public static setModules(modules: Module[]) {
+        this.user.modules = modules;
         return this;
     }
 

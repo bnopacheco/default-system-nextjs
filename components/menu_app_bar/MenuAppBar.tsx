@@ -6,7 +6,7 @@ import { useTheme } from '@material-ui/styles';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import User from '../../models/user.model';
-import useStyles from './styles/layoutAppBarStyles';
+import useStyles from '../layout_persistent_drawer/styles/layoutAppBarStyles';
 
 function menuAppBar({...props}) {
     const { t } = useTranslation();

@@ -4,10 +4,25 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import CompanyBuilder from '../../models/builders/CompanyBuilder';
+import ModuleBuilder from '../../models/builders/ModuleBuilder';
 import RoleBuilder from '../../models/builders/RoleBuilder';
 import UserBuilder from '../../models/builders/UserBuilder';
+import Module from '../../models/module';
+import {
+    CUSTOMES_RELATIONSHIP_MANAGEMENT,
+    FINANCE_AND_ACCOUNTING,
+    HUMAN_RESOURCE,
+    INVENTORY,
+    PURCHASE,
+    SALES_AND_MARKETING,
+    SUPPLY_CHAIN_MANAGEMENT
+} from '../../models/modules.type';
 import Role from '../../models/role';
-import { ADMIN, USER, VENDOR } from '../../models/roles.types';
+import {
+    ADMIN,
+    USER,
+    VENDOR
+} from '../../models/roles.types';
 import User from '../../models/user.model';
 import UserService from '../../services/user.service';
 import { getCookie } from '../../utils/cookie';
@@ -19,8 +34,10 @@ function loadingUserCookies(loadUser: (user: User) => void) {
         if (userCookie) {
             const userDecodedCookie = JSON.parse(atob(decodeURIComponent(userCookie)));
             const roles: Role[] = [];
-            userDecodedCookie.roles.forEach((role: string) => {
-                switch (role) {
+            const modules: Module[] = [];
+
+            userDecodedCookie.roles.forEach((role: any) => {
+                switch (role.name) {
                     case ADMIN:
                         roles.push(RoleBuilder.builder().setName(ADMIN).build());
                         break;
@@ -29,6 +46,32 @@ function loadingUserCookies(loadUser: (user: User) => void) {
                         break;
                     default:
                         roles.push(RoleBuilder.builder().setName(USER).build());
+                        break;
+                }
+            });
+
+            userDecodedCookie.modules.forEach((modulle: any) => {
+                switch (modulle.name) {
+                    case HUMAN_RESOURCE:
+                        modules.push(ModuleBuilder.builder().setName(HUMAN_RESOURCE).build());
+                        break;
+                    case INVENTORY:
+                        modules.push(ModuleBuilder.builder().setName(INVENTORY).build());
+                        break;
+                    case SALES_AND_MARKETING:
+                        modules.push(ModuleBuilder.builder().setName(SALES_AND_MARKETING).build());
+                        break;
+                    case PURCHASE:
+                        modules.push(ModuleBuilder.builder().setName(PURCHASE).build());
+                        break;
+                    case FINANCE_AND_ACCOUNTING:
+                        modules.push(ModuleBuilder.builder().setName(FINANCE_AND_ACCOUNTING).build());
+                        break;
+                    case CUSTOMES_RELATIONSHIP_MANAGEMENT:
+                        modules.push(ModuleBuilder.builder().setName(CUSTOMES_RELATIONSHIP_MANAGEMENT).build());
+                        break;
+                    default:
+                        modules.push(ModuleBuilder.builder().setName(SUPPLY_CHAIN_MANAGEMENT).build());
                         break;
                 }
             });
@@ -46,6 +89,7 @@ function loadingUserCookies(loadUser: (user: User) => void) {
                 .setRoles(roles)
                 .setToken(userDecodedCookie.token)
                 .setCompany(company)
+                .setModules(modules)
                 .build();
 
             loadUser(user);

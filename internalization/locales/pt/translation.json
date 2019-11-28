@@ -21,6 +21,8 @@
         "home": "Inicial",
         "mini_variant_drawer": "Mini Variant Drawer",
         "persistent_drawer": "Persistent Drawer",
+        "sales": "Vendas e Marketing",
+        "hr": "Recursos Humanos",
         "logout": "Sair"
     },
     "app_bar_icons": {
@@ -28,5 +30,12 @@
         "notifications": "Notificações",
         "profile": "Perfil"
     },
+    "human_resources": {
+        "human_resources_title": "Página Recursos Humanos"
+    },
+    "sales_and_marketing": {
+        "sales_and_marketing_title": "Página de vendas e marketing."
+    },
+    "unauthorized_module": "Modulo não autorizado.",
     "loading": "Carregando..."
 }

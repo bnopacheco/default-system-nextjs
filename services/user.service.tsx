@@ -3,6 +3,7 @@ import MessageBuilder from '../components/message/model/builders/MessageBuilder'
 import CompanyBuilder from '../models/builders/CompanyBuilder';
 import RoleBuilder from '../models/builders/RoleBuilder';
 import UserBuilder from '../models/builders/UserBuilder';
+import { SALES_AND_MARKETING } from '../models/modules.type';
 import { USER } from '../models/roles.types';
 import User from '../models/user.model';
 import { authenticateAction, deAuthenticateAction } from '../state/actions/authAction';
@@ -26,9 +27,9 @@ export default class UserService {
                 .setName(githubuser.name)
                 .setEmail(githubuser.email)
                 .setImage(githubuser.avatar_url)
-                .setPassword(password)
-                .setRole(USER)
-                .setCompany(company)
+                .addRole(USER)
+                .addModule(SALES_AND_MARKETING)
+                .setCompany(githubuser.company)
                 .setToken(btoa(githubuser.node_id)).build();
 
                 setCookie('user', btoa(JSON.stringify(user)), rememberme);

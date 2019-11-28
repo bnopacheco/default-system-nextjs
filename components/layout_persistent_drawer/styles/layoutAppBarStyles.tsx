@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme: Theme) =>
     cardAvatar: {
       display: 'flex',
       width: '100%',
-justifyContent: 'center',
+      justifyContent: 'center',
     }
   }),
 );

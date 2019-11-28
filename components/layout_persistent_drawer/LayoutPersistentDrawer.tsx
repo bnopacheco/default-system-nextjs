@@ -8,7 +8,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useTheme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Language } from '@material-ui/icons';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,13 +19,12 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import User from '../../models/user.model';
 import UserService from '../../services/user.service';
-import Utils from '../../utils/Utils';
 import Loading from '../loading/Loading';
 import LoadingApp from '../loading/LoadingApp';
+import MenuAppBar from '../menu_app_bar/MenuAppBar';
 import MessageComponent from '../message/MessageComponent';
+import MobileMenu from '../mobile_menu/MobileMenu';
 import Drawer from './Drawer';
-import MenuAppBar from './MenuAppBar';
-import MobileMenu from './MobileMenu';
 import useStyles from './styles/layoutAppBarStyles';
 
 function LayoutPersistentDrawer({...props}) {

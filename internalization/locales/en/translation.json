@@ -21,6 +21,8 @@
         "home": "Home",
         "mini_variant_drawer": "Mini Variant Drawer",
         "persistent_drawer": "Persistent Drawer",
+        "sales": "Sales and Marketing",
+        "hr": "Human Resources",
         "logout": "Logout"
     },
     "app_bar_icons": {
@@ -28,5 +30,12 @@
         "notifications": "Notifications",
         "profile": "Profile"
     },
+    "human_resources": {
+        "human_resources_title": "Human Resources Page"
+    },
+    "sales_and_marketing": {
+        "sales_and_marketing_title": "Sales and marketing page"
+    },
+    "unauthorized_module": "Unauthorized module.",
     "loading": "Loading..."
 }

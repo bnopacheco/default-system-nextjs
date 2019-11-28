@@ -1,32 +1,41 @@
 {
     "app_bar": {
         "label": "Default NextJS Application",
-        "search": "Search..."
+        "search": "Buscar..."
     },
     "profile": {
-        "profile": "Profile",
-        "user": "User: ",
+        "profile": "Perfil",
+        "user": "Usuario: ",
         "email": "Email: ",
-        "activeUser": "Active for USER",
-        "activeAdmin": "Active for ADMIN"
+        "activeUser": "Activo para USER",
+        "activeAdmin": "Activo para ADMIN"
     },
     "app_bar_profile": {
-        "profile": "Profile",
-        "user": "User: ",
+        "profile": "Perfil",
+        "user": "Usuario: ",
         "email": "Email: ",
-        "company": "Company",
-        "logout": "Logout"
+        "company": "Empresa",
+        "logout": "Dejar"
     },
     "menu": {
-        "home": "Home",
+        "home": "Inicio",
         "mini_variant_drawer": "Mini Variant Drawer",
         "persistent_drawer": "Persistent Drawer",
-        "logout": "Logout"
+        "sales": "Ventas y Marketing",
+        "hr": "Recursos humanos",
+        "logout": "Dejar"
     },
     "app_bar_icons": {
-        "messages": "Messages",
-        "notifications": "Notifications",
-        "profile": "Profile"
+        "messages": "Mensajes",
+        "notifications": "Notificaciones",
+        "profile": "Perfil"
     },
-    "loading": "Loading..."
+    "human_resources": {
+        "human_resources_title": "Pagina de recursos humanos"
+    },
+    "sales_and_marketing": {
+        "sales_and_marketing_title": "Pagina de ventas y Marketing"
+    },
+    "unauthorized_module": "Módulo no autorizado.",
+    "loading": "Cargando..."
 }
