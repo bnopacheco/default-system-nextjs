@@ -4,23 +4,23 @@ Minimum system implemented for a WEB application.
 
 The idea of this project is to provide a system template with the minimum necessary to start a frontend project in react, it contains:
     
-    - login control;
-    - Loading of processes;
-    - Feedback with messages to user;
-    - Default template for system pages;
-    - responsive system;
-    - System page routes;
+    - login control;
+    - Loading of processes;
+    - Feedback with messages to user;
+    - Default template for system pages;
+    - responsive system;
+    - System page routes;
 
 Libraries and technologies used in the system include:
 
-    - NextJS
-    - Redux
-    - Reduxthunk
-    - ImmutableJS
-    - Material UI
-    - Jest JS
-    - Typescript
-    - i18next
+    - NextJS;
+    - Redux;
+    - Reduxthunk;
+    - ImmutableJS;
+    - Material UI;
+    - Jest JS;
+    - Typescript;
+    - i18next;
 
 ---------------------------------------------------------------
 
@@ -37,11 +37,11 @@ A ideia deste projeto é disponibilizar um template de sistema com o mínimo nec
 
 Bibliotecas e tecnologias utilizadas no sistema incluem:
 
-    - NextJS
-    - Redux
-    - Reduxthunk
-    - ImmutableJS
-    - Material UI
-    - Jest JS
-    - Typescript
-    - i18next
+    - NextJS;
+    - Redux;
+    - Reduxthunk;
+    - ImmutableJS;
+    - Material UI;
+    - Jest JS;
+    - Typescript;
+    - i18next;
