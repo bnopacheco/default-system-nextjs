@@ -3,13 +3,13 @@
 Minimum system implemented for a WEB application.
 
 The idea of this project is to provide a system template with the minimum necessary to start a frontend project in react, it contains:
-    
-    - login control;
-    - Loading of processes;
-    - Feedback with messages to user;
-    - Default template for system pages;
-    - responsive system;
-    - System page routes;
+
+- Login control;
+- Loading of processes;
+- Feedback with messages to user;
+- Default template for system pages;
+- responsive system;
+- System page routes;
 
 Libraries and technologies used in the system include:
 
