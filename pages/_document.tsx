@@ -12,8 +12,12 @@ class DocumentDefault extends Document {
           <title>Default System NextJS</title>
           <meta
             name='description'
-            content='Sistema com mínimo implementado para uma aplicação WEB. A ideia deste projeto é
-              disponibilizar um template de sistema com o mínimo necessário para iniciar um projeto frontend em react'
+            content='Minimum system implemented for a WEB application.
+            The idea of this project is to provide a system template with the minimum necessary to start a reac frontend project.'
+          />
+          <meta
+            name='keywords'
+            content='react, nextjs, next js, material-ui, redux'
           />
           <meta charSet='utf-8' />
           <meta

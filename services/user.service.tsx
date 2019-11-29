@@ -51,7 +51,7 @@ export default class UserService {
                     messagesAction([
                         MessageBuilder.builder()
                             .setVariant('error')
-                            .setMessage(error.message)
+                            .setMessage('Invalid login')
                             .build()
                     ])
                 );

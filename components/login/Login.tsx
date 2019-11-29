@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import UserService from '../../services/user.service';
 import LoadingApp from '../loading/LoadingApp';
+import MessageComponent from '../message/MessageComponent';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -70,6 +71,7 @@ function Login({ ...props }) {
         props.loadingLogin ? <LoadingApp /> :
         <Container component='main' maxWidth='xs'>
             <CssBaseline />
+            <MessageComponent />
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
