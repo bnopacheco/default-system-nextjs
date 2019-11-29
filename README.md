@@ -21,7 +21,9 @@ Libraries and technologies used in the system include:
     - Jest JS;
     - Typescript;
     - i18next;
-
+System available at https://default-system-nextjs.herokuapp.com/
+     To login enter your github username and enter any password value.
+     
 ---------------------------------------------------------------
 
 Sistema com mínimo implementado para uma aplicação WEB.
@@ -45,3 +47,7 @@ Bibliotecas e tecnologias utilizadas no sistema incluem:
     - Jest JS;
     - Typescript;
     - i18next;
+    
+   
+  Sistema disponivel em https://default-system-nextjs.herokuapp.com/
+    Para acessar entre com seu usuário github e digite qualquer valor para senha.
