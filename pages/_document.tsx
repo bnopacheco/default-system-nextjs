@@ -9,6 +9,12 @@ class DocumentDefault extends Document {
     return (
       <html lang='en'>
         <Head>
+          <title>Default System NextJS</title>
+          <meta
+            name='description'
+            content='Sistema com mínimo implementado para uma aplicação WEB. A ideia deste projeto é
+              disponibilizar um template de sistema com o mínimo necessário para iniciar um projeto frontend em react'
+          />
           <meta charSet='utf-8' />
           <meta
             name='viewport'
