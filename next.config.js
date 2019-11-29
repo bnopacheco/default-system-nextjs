@@ -6,4 +6,7 @@ module.exports = {
         config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
         return config;
     },
+    env: {
+        API: 'https://api.github.com'
+    }
 };
