@@ -1,9 +1,9 @@
 import React from 'react';
 import Home from '../components/home/home';
-import LayoutPersistentDrawer from '../components/layout_persistent_drawer/LayoutPersistentDrawer';
+import Layout from '../components/layout/Layout';
 import { auth, withAuthSync } from '../utils/auth';
 
-const HomePage = () =>   <LayoutPersistentDrawer><Home /></LayoutPersistentDrawer>;
+const HomePage = () => <Layout><Home/></Layout>;
 
 HomePage.getInitialProps = async (ctx) => {
     const token = auth(ctx);

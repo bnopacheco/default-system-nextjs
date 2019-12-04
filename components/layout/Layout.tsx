@@ -1,4 +1,3 @@
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,17 +8,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import User from '../../models/user.model';
 import UserService from '../../services/user.service';
-import Loading from '../loading/Loading';
-import LoadingApp from '../loading/LoadingApp';
-import ListMenu from '../menu_default/ListMenu';
-import MessageComponent from '../message/MessageComponent';
-import AppBarLayout from './AppBarLayout';
+import Loading from '../common/loading/Loading';
+import LoadingApp from '../common/loading/LoadingApp';
+import MessageComponent from '../common/message/MessageComponent';
+import { useWindowSize } from '../common/resize/resizeDetector';
+import AppBarLayout from './app_bar/AppBarLayout';
+import ListMenu from './menu_default/ListMenu';
 import useStyles from './styles/layoutStyles';
 
-function LayoutMiniVariantDrawer({ ...props }) {
+function Layout({ ...props }) {
   const classes = useStyles(useTheme());
   const user: User = props.user;
   const [open, setOpen] = React.useState(false);
+
+  const size = useWindowSize();
 
   function handleDrawerOpen() {
     setOpen(true);
@@ -34,7 +36,8 @@ function LayoutMiniVariantDrawer({ ...props }) {
     <div className={classes.root}>
       <AppBarLayout open={open} handleDrawerOpen={handleDrawerOpen}/>
 
-      <Drawer variant='permanent'
+      <Drawer
+        variant={size && size.width > 600 ? 'permanent' : 'temporary'}
         className={clsx(classes.drawer, { [classes.drawerOpen]: open, [classes.drawerClose]: !open, })}
         classes={{ paper: clsx({ [classes.drawerOpen]: open, [classes.drawerClose]: !open, }), }}
         open={open} >
@@ -73,4 +76,4 @@ function mapDispatchToProps(dispatch: any) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LayoutMiniVariantDrawer);
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);

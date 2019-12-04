@@ -3,11 +3,11 @@ import { useTheme } from '@material-ui/styles';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import CompanyBuilder from '../../models/builders/CompanyBuilder';
-import ModuleBuilder from '../../models/builders/ModuleBuilder';
-import RoleBuilder from '../../models/builders/RoleBuilder';
-import UserBuilder from '../../models/builders/UserBuilder';
-import Module from '../../models/module';
+import CompanyBuilder from '../../../models/builders/CompanyBuilder';
+import ModuleBuilder from '../../../models/builders/ModuleBuilder';
+import RoleBuilder from '../../../models/builders/RoleBuilder';
+import UserBuilder from '../../../models/builders/UserBuilder';
+import Module from '../../../models/module';
 import {
     CUSTOMES_RELATIONSHIP_MANAGEMENT,
     FINANCE_AND_ACCOUNTING,
@@ -16,16 +16,16 @@ import {
     PURCHASE,
     SALES_AND_MARKETING,
     SUPPLY_CHAIN_MANAGEMENT
-} from '../../models/modules.type';
-import Role from '../../models/role';
+} from '../../../models/modules.type';
+import Role from '../../../models/role';
 import {
     ADMIN,
     USER,
     VENDOR
-} from '../../models/roles.types';
-import User from '../../models/user.model';
-import UserService from '../../services/user.service';
-import { getCookie } from '../../utils/cookie';
+} from '../../../models/roles.types';
+import User from '../../../models/user.model';
+import UserService from '../../../services/user.service';
+import { getCookie } from '../../../utils/cookie';
 import { useStyles } from './styles/LoadingStyle';
 
 function loadingUserCookies(loadUser: (user: User) => void) {

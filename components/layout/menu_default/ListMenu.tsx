@@ -7,30 +7,20 @@ import Menu from '@material-ui/icons/Menu';
 import Router from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
-import { HUMAN_RESOURCE, SALES_AND_MARKETING } from '../../models/modules.type';
-import User from '../../models/user.model';
-import UserService from '../../services/user.service';
+import { HUMAN_RESOURCE, SALES_AND_MARKETING } from '../../../models/modules.type';
+import User from '../../../models/user.model';
+import UserService from '../../../services/user.service';
 
 function ListMenu({...props}) {
     const { t } = useTranslation();
     const user: User = props.user;
 
     return (
-        <List>
+        <List style={{marginLeft: '0.5em'}}>
 
           <ListItem button key={'home'} onClick={() => { Router.push('/'); }}>
             <ListItemIcon><Home /></ListItemIcon>
             <ListItemText primary={t('menu.home')} />
-          </ListItem>
-
-          <ListItem button key={'mini_variant_drawer'} onClick={() => { Router.push('/layout-mini-variant-drawer'); }}>
-            <ListItemIcon><Menu /></ListItemIcon>
-            <ListItemText primary={t('menu.mini_variant_drawer')} />
-          </ListItem>
-
-          <ListItem button key={'persistent_drawer'} onClick={() => { Router.push('/layout-persistent-drawer'); }}>
-            <ListItemIcon><MenuOpen /></ListItemIcon>
-            <ListItemText primary={t('menu.persistent_drawer')} />
           </ListItem>
 
           {

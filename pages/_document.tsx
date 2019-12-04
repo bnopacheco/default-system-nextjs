@@ -1,5 +1,4 @@
 import { ServerStyleSheets } from '@material-ui/styles';
-import nextCookie from 'next-cookies';
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 import theme from '../theme/Theme';
@@ -9,16 +8,6 @@ class DocumentDefault extends Document {
     return (
       <html lang='en'>
         <Head>
-          <title>Default System NextJS</title>
-          <meta
-            name='description'
-            content='Minimum system implemented for a WEB application.
-            The idea of this project is to provide a system template with the minimum necessary to start a reac frontend project.'
-          />
-          <meta
-            name='keywords'
-            content='react, nextjs, next js, material-ui, redux'
-          />
           <meta charSet='utf-8' />
           <meta
             name='viewport'

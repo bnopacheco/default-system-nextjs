@@ -1,7 +1,7 @@
 import useTheme from '@material-ui/styles/useTheme';
 import React from 'react';
 import { connect } from 'react-redux';
-import { messagesAction } from '../../state/actions/messages.action';
+import { messagesAction } from '../../../state/actions/messages.action';
 import PropsBuilder from './model/builders/PropsBuilder';
 import { Message } from './model/Message';
 import Props from './model/Props';

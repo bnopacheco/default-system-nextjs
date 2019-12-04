@@ -1,12 +1,21 @@
-import { Avatar, Card, CardContent, Grid, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { Avatar, Card, CardContent, Grid, ListItemIcon, ListItemText, Theme, Typography } from '@material-ui/core';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { PowerSettingsNew } from '@material-ui/icons';
-import { useTheme } from '@material-ui/styles';
+import { createStyles, makeStyles, useTheme } from '@material-ui/styles';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import User from '../../models/user.model';
-import useStyles from '../layout_persistent_drawer/styles/layoutAppBarStyles';
+import User from '../../../models/user.model';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    cardAvatar: {
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'center',
+    }
+  }),
+);
 
 function menuAppBar({...props}) {
     const { t } = useTranslation();

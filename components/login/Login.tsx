@@ -5,8 +5,8 @@ import queryString from 'query-string';
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import UserService from '../../services/user.service';
-import LoadingApp from '../loading/LoadingApp';
-import MessageComponent from '../message/MessageComponent';
+import LoadingApp from '../common/loading/LoadingApp';
+import MessageComponent from '../common/message/MessageComponent';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {

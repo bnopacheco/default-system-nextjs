@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import MessageBuilder from '../components/message/model/builders/MessageBuilder';
+import MessageBuilder from '../components/common/message/model/builders/MessageBuilder';
 import CompanyBuilder from '../models/builders/CompanyBuilder';
 import RoleBuilder from '../models/builders/RoleBuilder';
 import UserBuilder from '../models/builders/UserBuilder';

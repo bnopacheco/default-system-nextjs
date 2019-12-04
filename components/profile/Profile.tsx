@@ -1,4 +1,5 @@
-import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Typography, Divider } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import useTheme from '@material-ui/styles/useTheme';
 import { mdiAccountCardDetails } from '@mdi/js';
@@ -58,33 +59,35 @@ function Profile({...props}) {
     }, [page, rowsPerPage]);
 
     return (
-        <>
-            <Card className={classes.card} style={{float: 'left'}}>
-                <CardContent>
-                    <Typography gutterBottom variant='h5' component='h2' >
-                        <Icon path={mdiAccountCardDetails} title='User Profile' size={1} color='grey'/>
-                    </Typography>
-                    <Typography gutterBottom variant='h5' component='h2' >
-                        {t('profile.profile')}
-                    </Typography>
-                    <Typography variant='body2' color='textSecondary' component='p'>
-                        {t('profile.user')}{user.name}
-                    </Typography>
-                    <Typography variant='body2' color='textSecondary' component='p'>
-                        {t('profile.email')} {user.email}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size='small' color='primary' disabled={!user.containsRole(USER)}>
-                        {t('profile.activeUser')}
-                    </Button>
-                    <Button size='small' color='primary' disabled={!user.containsRole(ADMIN)}>
-                        {t('profile.activeAdmin')}
-                    </Button>
-                </CardActions>
-            </Card>
-            <div style={{float: 'left', marginLeft: '2em'}}>
-               {
+        <Grid container spacing={3}>
+            <Grid item xs={12} sm={4}>
+                <Card className={classes.card} style={{float: 'left'}}>
+                    <CardContent>
+                        <Typography gutterBottom variant='h5' component='h2' >
+                            <Icon path={mdiAccountCardDetails} title='User Profile' size={1} color='grey'/>
+                        </Typography>
+                        <Typography gutterBottom variant='h5' component='h2' >
+                            {t('profile.profile')}
+                        </Typography>
+                        <Typography variant='body2' color='textSecondary' component='p'>
+                            {t('profile.user')}{user.name}
+                        </Typography>
+                        <Typography variant='body2' color='textSecondary' component='p'>
+                            {t('profile.email')} {user.email}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button size='small' color='primary' disabled={!user.containsRole(USER)}>
+                            {t('profile.activeUser')}
+                        </Button>
+                        <Button size='small' color='primary' disabled={!user.containsRole(ADMIN)}>
+                            {t('profile.activeAdmin')}
+                        </Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+            <Grid item xs={12} sm={8}>
+                {
                     displayList.length &&
                     <DisplaySimpleList
                         width={'50em'}
@@ -94,9 +97,10 @@ function Profile({...props}) {
                         setRowsPerPage={setRowsPerPage}
                         setPage={setPage}
                         count={count}
-                        sizes={sizes}/>}
-            </div>
-        </>
+                        sizes={sizes}/>
+                }
+            </Grid>
+        </Grid>
     );
 }
 

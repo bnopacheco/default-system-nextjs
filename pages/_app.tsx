@@ -2,6 +2,7 @@ import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { fromJS } from 'immutable';
 import withRedux from 'next-redux-wrapper';
+import Head from 'next/head'
 import React from 'react';
 import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
@@ -22,6 +23,18 @@ const MyApp = ({ Component, pageProps, store }) => {
             <I18nextProvider i18n={i18n}>
                 <ThemeProvider theme={theme}>
                     <CssBaseline />
+                    <Head>
+                        <title>Default System NextJS</title>
+                        <meta
+                            name='description'
+                            content='Minimum system implemented for a WEB application.
+                            The idea of this project is to provide a system template with the minimum necessary to start a reac frontend project.'
+                        />
+                        <meta
+                            name='keywords'
+                            content='react, nextjs, next js, material-ui, redux'
+                        />
+                    </Head>
                     <Component {...pageProps} />
                 </ThemeProvider>
             </I18nextProvider>
