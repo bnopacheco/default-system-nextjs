@@ -12,6 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import User from '../../../models/user.model';
 import UserService from '../../../services/user.service';
+import { useWindowSize } from '../../common/resize/resizeDetector';
 import MenuAppBar from '../menu_app_bar/MenuAppBar';
 import MobileMenu from '../mobile_menu/MobileMenu';
 import useStyles from './ToolbarContentStyles';
@@ -20,6 +21,7 @@ function ToolbarContent({...props}) {
 
     const classes = useStyles(useTheme());
     const { t, i18n } = useTranslation();
+    const size = useWindowSize();
     const user: User = props.user;
 
     const [language, setLanguage] = React.useState('en');
@@ -62,7 +64,7 @@ function ToolbarContent({...props}) {
 
     return  <>
                 <Typography variant='h6' noWrap>
-                    {t('app_bar.label')}
+                    { size.width > 600 && t('app_bar.label')}
                 </Typography>
 
                 <div className={classes.search}>
