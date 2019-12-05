@@ -3,14 +3,38 @@ const webpack = require('webpack');
 const withOffline = require('next-offline')
 
 const nextConfig = {
-    generateSw: true,
     workboxOpts: {
-        swDest: "./service-worker.js",
-        // swSrc: path.join(__dirname, "./service-worker/index.js"),
-        globPatterns: ['static/**/*'],
-        globDirectory: '.'
+        generateSw: true,
+        generateInDevMode: true,
+        runtimeCaching: [
+            {
+                urlPattern: /^https?.*/,
+                handler: 'NetworkFirst',
+                options: {
+                  cacheName: 'offlineCache',
+                  expiration: {
+                    maxEntries: 200
+                  }
+                }
+            },
+            {
+              urlPattern: /.png$/,
+              handler: 'CacheFirst'
+            },
+            {
+              urlPattern: /api/,
+              handler: 'NetworkFirst',
+              options: {
+                cacheableResponse: {
+                  statuses: [0, 200],
+                  headers: {
+                    'x-test': 'true'
+                  }
+                }
+              }
+            }
+          ]
     },
-
     webpack: (config, { isServer }) => {
         config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
         return config;
