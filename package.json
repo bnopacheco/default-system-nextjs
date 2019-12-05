@@ -1,7 +1,16 @@
 {
   "name": "next-default",
   "version": "0.1.0",
+  "description": "Minimum system implemented for a WEB application. The idea of this project is to provide a system template with the minimum necessary to start a reac frontend project.",
   "private": true,
+  "author": "Julio <julio.silva.cwb@gmail.com>",
+  "keywords": [
+    "react",
+    "nextjs",
+    "next js",
+    "material-ui",
+    "redux"
+  ],
   "scripts": {
     "test": "jest",
     "dev": "NODE_ENV=dev node server.js",
@@ -42,7 +51,8 @@
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "sw-precache-webpack-plugin": "^0.11.5"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",

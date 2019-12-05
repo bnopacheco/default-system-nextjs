@@ -1,42 +1,23 @@
 const { parsed: localEnv } = require('dotenv-flow').config();
 const webpack = require('webpack');
-const withOffline = require('next-offline')
 
 const nextConfig = {
-    workboxOpts: {
-        runtimeCaching: [
-            {
-                urlPattern: /^https?.*/,
-                handler: 'NetworkFirst',
-                options: {
-                  cacheName: 'offlineCache',
-                  expiration: {
-                    maxEntries: 200
-                  }
-                }
-            },
-            {
-              urlPattern: /.png$/,
-              handler: 'CacheFirst'
-            },
-            {
-              urlPattern: /api/,
-              handler: 'NetworkFirst',
-              options: {
-                cacheableResponse: {
-                  statuses: [0, 200],
-                  headers: {
-                    'x-test': 'true'
-                  }
-                }
-              }
-            }
-          ]
-    },
     webpack: (config, { isServer }) => {
         config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
+        config.plugins.push(
+            new SWPrecacheWebpackPlugin({
+                verbose: true,
+                staticFileGlobsIgnorePatterns: [/\.next\//],
+                runtimeCaching: [
+                  {
+                    handler: "networkFirst",
+                    urlPattern: /^https?.*/
+                  }
+                ]
+            })
+        );
         return config;
     }
 };
 
-module.exports = withOffline(nextConfig);
+module.exports = nextConfig;
