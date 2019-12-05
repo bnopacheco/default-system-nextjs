@@ -1,5 +1,6 @@
 const { parsed: localEnv } = require('dotenv-flow').config();
 const webpack = require('webpack');
+const SWPrecacheWebpackPlugin = require("sw-precache-webpack-plugin");
 
 const nextConfig = {
     webpack: (config, { isServer }) => {
