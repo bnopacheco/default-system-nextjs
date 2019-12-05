@@ -9,7 +9,7 @@ const nextConfig = {
         config.plugins.push(
             new SWPrecacheWebpackPlugin({
                 cacheId: 'test-lighthouse',
-                filepath: path.resolve('./static/service-worker.js'),
+                filepath: path.resolve('./service-worker.js'),
                 staticFileGlobs: [
                 'static/**/*'
                 ],
@@ -28,9 +28,9 @@ const nextConfig = {
     },
     devServer: {
         setup: function (app) {
-            app.get('/static/service-worker.js', function (req, res) {
+            app.get('/service-worker.js', function (req, res) {
                 res.set({ 'Content-Type': 'application/javascript; charset=utf-8' });
-                res.send(fs.readFileSync('./static/service-worker.js'));
+                res.send(fs.readFileSync('./service-worker.js'));
             });
         }
     }

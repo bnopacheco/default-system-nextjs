@@ -15,10 +15,10 @@ app.prepare()
       const { pathname } = parsedUrl
 
       // handle GET request to /service-worker.js
-      if (pathname === '/static/service-worker.js') {
+      if (pathname === '/service-worker.js') {
         // const filePath = join(__dirname, '.next', pathname)
         // app.serveStatic(req, res, filePath)
-        app.serveStatic(req, res, resolve('./static/service-worker.js'))
+        app.serveStatic(req, res, resolve('./service-worker.js'))
       } else {
         handle(req, res, parsedUrl)
       }
