@@ -19,7 +19,7 @@ const MyApp = ({ Component, pageProps, store }) => {
 
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
-            .register('/service-worker.js')
+            .register('/static/service-worker.js')
             .then((registration) => {
                 console.log('service worker registration successful: ', registration);
             })

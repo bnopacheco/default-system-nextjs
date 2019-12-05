@@ -1,5 +1,5 @@
 const { createServer } = require('http')
-const { join } = require('path')
+const { join, resolve } = require('path')
 const { parse } = require('url')
 const next = require('next')
 
@@ -15,10 +15,10 @@ app.prepare()
       const { pathname } = parsedUrl
 
       // handle GET request to /service-worker.js
-      if (pathname === '/service-worker.js') {
-        const filePath = join(__dirname, '.next', pathname)
-
-        app.serveStatic(req, res, filePath)
+      if (pathname === '/static/service-worker.js') {
+        // const filePath = join(__dirname, '.next', pathname)
+        // app.serveStatic(req, res, filePath)
+        app.serveStatic(req, res, resolve('./static/service-worker.js'))
       } else {
         handle(req, res, parsedUrl)
       }
