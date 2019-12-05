@@ -61,7 +61,6 @@ function Login({ ...props }) {
 
     useEffect(() => {
         const query: any = queryString.parse(window.location.search);
-        console.log(query);
         if (query.redirect) {
             setRedirect(redirect);
         }

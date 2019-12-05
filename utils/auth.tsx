@@ -21,8 +21,6 @@ export const auth = (ctx: any) => {
     Router.push('/login');
   }
 
-  console.log(ctx);
-
   return token;
 };
 
@@ -30,7 +28,6 @@ export const withAuthSync = (WrappedComponent: any) => {
   const Wrapper = (props: any) => {
     const syncLogout = (event: any) => {
       if (event.key === 'logout') {
-        console.log('logged out from storage!');
         Router.push('/login');
       }
     };

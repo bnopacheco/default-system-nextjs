@@ -20,7 +20,7 @@ export default class UserService {
             dispatch(loadingsLogin(true));
             CustomFetch.get(`/users/${username}`).then((githubuser: any) => {
 
-                const company = CompanyBuilder.builder().setId(1).setName('Company Name').build();
+                const company = CompanyBuilder.builder().setId(1).setName(githubuser.company).build();
 
                 const user: User = UserBuilder.builder()
                 .setId(1)
@@ -29,7 +29,7 @@ export default class UserService {
                 .setImage(githubuser.avatar_url)
                 .addRole(USER)
                 .addModule(SALES_AND_MARKETING)
-                .setCompany(githubuser.company)
+                .setCompany(company)
                 .setToken(btoa(githubuser.node_id)).build();
 
                 setCookie('user', btoa(JSON.stringify(user)), rememberme);

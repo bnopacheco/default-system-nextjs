@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "test": "jest",
-    "dev": "NODE_ENV=dev next dev -p 3001",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production next start -p $PORT",
+    "start": "NODE_ENV=production node server.js",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
@@ -30,7 +30,7 @@
     "mdi-material-ui": "^6.8.0",
     "next": "^9.0.5",
     "next-cookies": "^2.0.3",
-    "next-offline": "^4.0.5",
+    "next-offline": "^4.0.6",
     "next-redux-wrapper": "^3.0.0",
     "node-fetch": "^2.6.0",
     "react": "^16.9.0",

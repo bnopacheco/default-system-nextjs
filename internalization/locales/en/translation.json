@@ -14,7 +14,7 @@
         "profile": "Profile",
         "user": "User: ",
         "email": "Email: ",
-        "company": "Company",
+        "company": "Company: ",
         "logout": "Logout"
     },
     "menu": {
