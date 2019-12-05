@@ -4,8 +4,6 @@ const withOffline = require('next-offline')
 
 const nextConfig = {
     workboxOpts: {
-        generateSw: true,
-        generateInDevMode: true,
         runtimeCaching: [
             {
                 urlPattern: /^https?.*/,
