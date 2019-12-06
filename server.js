@@ -3,15 +3,21 @@ const { join } = require('path')
 const { parse } = require('url')
 const next = require('next')
 
+const port = process.env.PORT || 3001;
+
 const express = require('express')
 const httpApp = express()
 httpApp.get("*", function (req, res, next) {
   res.redirect("https://" + req.headers.host + "/" + req.path);
 });
+httpApp.listen(port);
+httpApp.on('listening', () => {
+    console.log("Listening to redirect http to https");
+})
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
-const port = process.env.PORT || 3001;
+
 
 
 app.prepare()
