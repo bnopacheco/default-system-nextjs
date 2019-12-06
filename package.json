@@ -1,7 +1,7 @@
 {
   "name": "next-default",
   "version": "0.1.0",
-  "description": "Minimum system implemented for a WEB application. Template with the minimum necessary to start a nextjs project.",
+  "description": "Minimum system implemented for a WEB application. Template with the minimum necessary to start a react frontend project.",
   "private": true,
   "author": "Julio <julio.silva.cwb@gmail.com>",
   "keywords": [
@@ -39,6 +39,7 @@
     "mdi-material-ui": "^6.8.0",
     "next": "^9.0.5",
     "next-cookies": "^2.0.3",
+    "next-offline": "^4.0.6",
     "next-redux-wrapper": "^3.0.0",
     "node-fetch": "^2.6.0",
     "react": "^16.9.0",
@@ -50,7 +51,8 @@
     "redux-immutable": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "sw-precache-webpack-plugin": "^0.11.5"
   },
   "devDependencies": {
     "@types/jest": "^24.0.23",
