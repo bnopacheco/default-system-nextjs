@@ -10,10 +10,6 @@ const httpApp = express()
 httpApp.get("*", function (req, res, next) {
   res.redirect("https://" + req.headers.host + "/" + req.path);
 });
-httpApp.listen(port);
-httpApp.on('listening', () => {
-    console.log("Listening to redirect http to https");
-})
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
