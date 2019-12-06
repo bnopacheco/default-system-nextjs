@@ -1,6 +1,7 @@
 import { CssBaseline } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { fromJS } from 'immutable';
+import { register, unregister } from 'next-offline/runtime';
 import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import React from 'react';
@@ -17,17 +18,7 @@ const MyApp = ({ Component, pageProps, store }) => {
             jssStyles.parentNode.removeChild(jssStyles);
         }
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker
-            .register('/service-worker.js')
-            .then((registration) => {
-                console.log('service worker registration successful: ', registration);
-            })
-            .catch((err) => {
-                console.warn('service worker registration failed', err.message);
-            });
-        }
-
+        register();
     }, []);
 
     return (

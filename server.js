@@ -1,11 +1,10 @@
 const { createServer } = require('http')
-const { join, resolve } = require('path')
+const { join } = require('path')
 const { parse } = require('url')
 const next = require('next')
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
-
 const port = process.env.PORT || 3001;
 
 app.prepare()
@@ -16,9 +15,9 @@ app.prepare()
 
       // handle GET request to /service-worker.js
       if (pathname === '/service-worker.js') {
-        // const filePath = join(__dirname, '.next', pathname)
-        // app.serveStatic(req, res, filePath)
-        app.serveStatic(req, res, resolve('./service-worker.js'))
+        const filePath = join(__dirname, '.next', pathname)
+
+        app.serveStatic(req, res, filePath)
       } else {
         handle(req, res, parsedUrl)
       }
