@@ -2,10 +2,15 @@ const { createServer } = require('http')
 const { join } = require('path')
 const { parse } = require('url')
 const next = require('next')
+const express = express()
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3001;
+
+express.get("*", function (req, res, next) {
+  res.redirect("https://" + req.headers.host + "/" + req.path);
+});
 
 app.prepare()
   .then(() => {

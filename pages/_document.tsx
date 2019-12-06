@@ -20,6 +20,10 @@ class DocumentDefault extends Document {
             href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap'
           />
           <link rel='icon' type='image/x-icon' href='/static/favicon.ico' />
+          <link rel='icon' type='image/x-icon' sizes='192x192'  href='/static/icons/icon.png' />
+          <link rel='apple-touch-icon' href='/static/icons/apple-touch-icon' />
+          <link rel='icon' type='image/x-icon' href='/static/icons/icon-512x512.png' />
+          <meta name='msapplication-square310x310logo' content='/static/icons/icon_largetile.png'></meta>
         </Head>
         <body>
           <Main />

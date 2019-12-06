@@ -6,7 +6,10 @@ const nextConfig = {
     webpack: (config, { isServer }) => {
         config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
         return config;
-    }
+    },
+    // workboxOpts: {
+    //     generateInDevMode: true
+    // }
 };
 
 module.exports = withOffline(nextConfig)
