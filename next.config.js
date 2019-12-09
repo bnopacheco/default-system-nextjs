@@ -12,7 +12,7 @@ const nextConfig = {
         config.plugins.push(new HtmlWebpackPlugin());
         config.plugins.push(new PreloadWebpackPlugin({
             rel: 'preload',
-            include: 'allChunks'
+            include: 'allAssets'
         }));
 
         return config;
