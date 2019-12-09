@@ -1,6 +1,8 @@
 const { parsed: localEnv } = require('dotenv-flow').config();
 const webpack = require('webpack');
 const withOffline = require('next-offline')
+const withFonts = require('next-fonts');
+const withCSS = require('@zeit/next-css')
 
 const nextConfig = {
     webpack: (config, { isServer }) => {
@@ -12,4 +14,4 @@ const nextConfig = {
     // }
 };
 
-module.exports = withOffline(nextConfig)
+module.exports = withOffline(withFonts(withCSS(nextConfig)))

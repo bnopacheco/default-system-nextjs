@@ -9,6 +9,7 @@ import { I18nextProvider } from 'react-i18next';
 import { Provider } from 'react-redux';
 import i18n from '../internalization/i18n';
 import { initialStore } from '../state/store';
+import loadFonts from '../theme/Fonts';
 import theme from '../theme/Theme';
 
 const MyApp = ({ Component, pageProps, store }) => {
@@ -17,6 +18,7 @@ const MyApp = ({ Component, pageProps, store }) => {
         if (jssStyles) {
             jssStyles.parentNode.removeChild(jssStyles);
         }
+        loadFonts();
         register();
     }, []);
 
@@ -36,7 +38,7 @@ const MyApp = ({ Component, pageProps, store }) => {
                             name='keywords'
                             content='react, nextjs, next js, material-ui, redux'
                         />
-                        <link rel='manifest' href='/public/static/manifest.json' />
+                        <link rel='manifest' href='/static/manifest.json' />
                     </Head>
                     <Component {...pageProps} />
                 </ThemeProvider>
