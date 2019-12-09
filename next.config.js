@@ -12,13 +12,7 @@ const nextConfig = {
         config.plugins.push(new HtmlWebpackPlugin());
         config.plugins.push(new PreloadWebpackPlugin({
             rel: 'preload',
-            as(entry) {
-              if (/\.css$/.test(entry)) return 'style';
-              if (/\.woff$/.test(entry)) return 'font';
-              if (/\.woff2$/.test(entry)) return 'font';
-              if (/\.png$/.test(entry)) return 'image';
-              return 'script';
-            }
+            include: 'allChunks'
         }));
 
         return config;
