@@ -36,7 +36,7 @@ const MyApp = ({ Component, pageProps, store }) => {
                             name='keywords'
                             content='react, nextjs, next js, material-ui, redux'
                         />
-                        <link rel='manifest' href='/static/manifest.json' />
+                        <link rel='manifest' href='/public/static/manifest.json' />
                     </Head>
                     <Component {...pageProps} />
                 </ThemeProvider>
