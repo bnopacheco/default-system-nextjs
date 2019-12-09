@@ -15,7 +15,7 @@ class DocumentDefault extends Document {
           />
           {/* PWA primary color */}
           <meta name='theme-color' content={theme.palette.primary.main} />
-          <link rel='preload' type='image/x-icon' href='/static/favicon.ico' />
+          <link rel='preload' type='image/x-icon' href='/favicon.ico' />
           <link rel='preload' type='image/x-icon' sizes='192x192'  href='/static/icons/icon-192x192.png' />
           <link rel='apple-touch-icon' href='/static/icons/apple-touch-icon' />
           <link rel='preload' type='image/x-icon' href='/static/icons/icon-512x512.png' />
