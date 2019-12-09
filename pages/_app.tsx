@@ -17,7 +17,6 @@ const MyApp = ({ Component, pageProps, store }) => {
         if (jssStyles) {
             jssStyles.parentNode.removeChild(jssStyles);
         }
-
         register();
     }, []);
 
