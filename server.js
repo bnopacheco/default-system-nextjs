@@ -1,12 +1,15 @@
-const { createServer } = require('http')
-const { join } = require('path')
-const { parse } = require('url')
-const next = require('next')
+const { createServer } = require('http');
+const { join } = require('path');
+const { parse } = require('url');
+const next = require('next');
+var enforce = require('express-sslify');
 
 const port = process.env.PORT || 3001;
 
-const express = require('express')
-const httpApp = express()
+const express = require('express');
+const httpApp = express();
+httpApp.use(enforce.HTTPS());
+
 httpApp.get("*", function (req, res, next) {
   res.redirect("https://" + req.headers.host + "/" + req.path);
 });

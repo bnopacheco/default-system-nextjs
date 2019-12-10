@@ -7,7 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const nextConfig = {
-    webpack: (config, { isServer }) => {
+    webpack: (config) => {
         config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
         config.plugins.push(new HtmlWebpackPlugin());
         config.plugins.push(new PreloadWebpackPlugin({
