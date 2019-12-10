@@ -1,6 +1,7 @@
 {
 	"name": "NextJS Default PWA",
 	"short_name": "NxJS PWA",
+	"description": "Minimum system implemented for a WEB application. The idea of this project is to provide a system template with the minimum necessary to start a reac frontend project.",
 	"icons": [
 		{
 			"src": "/static/icons/icon-192x192.png",
@@ -14,8 +15,8 @@
 		}
 	],
 	"start_url": "/",
-	"display": "standalone",
-	"orientation": "natural",
+	"display": "fullscreen",
+	"orientation": "any",
 	"background_color": "#FFFFFF",
 	"theme_color": "#FFFFFF"
 }
