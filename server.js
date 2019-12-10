@@ -13,7 +13,7 @@ app.prepare()
 
     const httpApp = express();
 
-    if ( process.env.NODE_ENV !== 'production') {
+    // if ( process.env.NODE_ENV !== 'production') {
       httpApp.get("*", (req, res) => {
         console.log(`user came to http :/`);
         res.writeHead(302, {
@@ -21,7 +21,7 @@ app.prepare()
         });
         res.end();
       })
-    }
+    // }
 
     createServer((req, res) => {
 
