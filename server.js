@@ -2,7 +2,13 @@ const { createServer } = require('http');
 const { join } = require('path');
 const { parse } = require('url');
 const next = require('next');
-var enforce = require('express-sslify');
+const express = require('express');
+const enforce = require('express-sslify');
+
+if ( process.env.NODE_ENV !== 'production') {
+  const appexpress = express();
+  appexpress.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 
 const port = process.env.PORT || 3001;
 
@@ -16,10 +22,6 @@ app.prepare()
 
       const parsedUrl = parse(req.url, true)
       const { pathname } = parsedUrl
-
-      if (req.headers['x-forwarded-proto'] !== 'https') {
-        return res.redirect(['https://', req.get('Host'), req.url].join(''));
-      }
 
       // handle GET request to /service-worker.js
       if (pathname === '/service-worker.js') {
