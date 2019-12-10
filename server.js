@@ -3,21 +3,26 @@ const { join } = require('path');
 const { parse } = require('url');
 const next = require('next');
 const express = require('express');
-const enforce = require('express-sslify');
-
-if ( process.env.NODE_ENV !== 'production') {
-  const appexpress = express();
-  appexpress.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
 
 const port = process.env.PORT || 3001;
-
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 
-
 app.prepare()
   .then(() => {
+
+    const httpApp = express();
+
+    if ( process.env.NODE_ENV !== 'production') {
+      httpApp.get("*", (req, res) => {
+        console.log(`user came to http :/`);
+        res.writeHead(302, {
+          Location: "https://" + req.headers.host + req.url
+        });
+        res.end();
+      })
+    }
+
     createServer((req, res) => {
 
       const parsedUrl = parse(req.url, true)
@@ -31,8 +36,7 @@ app.prepare()
       } else {
         handle(req, res, parsedUrl)
       }
-    })
-    .listen(port, () => {
-      console.log(`> Ready on http://localhost:${port}`)
+    }).listen(port, () => {
+      console.log(`> Ready on ${port}`)
     })
   })
