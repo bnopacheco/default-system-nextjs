@@ -9,11 +9,11 @@ const withCSS = require('@zeit/next-css')
 const nextConfig = {
     webpack: (config, { isServer }) => {
         config.plugins.push(new webpack.EnvironmentPlugin(localEnv));
-        // config.plugins.push(new HtmlWebpackPlugin());
-        // config.plugins.push(new PreloadWebpackPlugin({
-        //     rel: 'preload',
-        //     include: 'allAssets'
-        // }));
+        config.plugins.push(new HtmlWebpackPlugin());
+        config.plugins.push(new PreloadWebpackPlugin({
+            rel: 'preload',
+            include: 'allAssets'
+        }));
         config.module.rules.push({
             test: /\.(ico|gif|png|jpg|jpeg|svg|webp|woff|woff2)$/,
             use: [
