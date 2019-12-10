@@ -17,8 +17,8 @@ app.prepare()
       const parsedUrl = parse(req.url, true)
       const { pathname } = parsedUrl
 
-      if (process.env.NODE_ENV === 'production') {
-        enforce.HTTPS();
+      if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(['https://', req.get('Host'), req.url].join(''));
       }
 
       // handle GET request to /service-worker.js
