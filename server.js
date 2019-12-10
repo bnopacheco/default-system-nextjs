@@ -11,7 +11,7 @@ const express = require('express');
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 
-express.use(() => {
+express().use(() => {
   if (process.env.NODE_ENV === 'production') {
     enforce.HTTPS()
   }
