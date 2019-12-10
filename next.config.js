@@ -3,8 +3,8 @@ const webpack = require('webpack');
 const withOffline = require('next-offline')
 const withFonts = require('next-fonts');
 const withCSS = require('@zeit/next-css')
-// const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const nextConfig = {
     webpack: (config, { isServer }) => {
