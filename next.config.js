@@ -14,21 +14,6 @@ const nextConfig = {
             rel: 'preload',
             include: 'allAssets'
         }));
-        config.module.rules.push({
-            test: /\.(ico|gif|png|jpg|jpeg|svg|webp|woff|woff2)$/,
-            use: [
-              {
-                loader: 'emit-file-loader',
-                options: {
-                  name: '_next/static/chunks/fonts/[name].[ext]',
-                },
-              },
-              {
-                loader: 'file-loader',
-                options: {},
-              },
-            ],
-          });
 
         return config;
     },
