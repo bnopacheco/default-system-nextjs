@@ -6,19 +6,20 @@ var enforce = require('express-sslify');
 
 const port = process.env.PORT || 3001;
 
-// const express = require('express');
+const express = require('express');
 
 const app = next({ dev: process.env.NODE_ENV !== 'production' })
 const handle = app.getRequestHandler()
 
+express.use(() => {
+  if (process.env.NODE_ENV === 'production') {
+    enforce.HTTPS()
+  }
+});
 
 app.prepare()
   .then(() => {
     createServer((req, res) => {
-
-      if (process.env.NODE_ENV === 'production') {
-        app.use(enforce.HTTPS());
-      }
 
       const parsedUrl = parse(req.url, true)
       const { pathname } = parsedUrl
