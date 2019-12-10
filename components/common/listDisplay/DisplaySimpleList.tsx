@@ -1,3 +1,4 @@
+import { Card, CardContent, Typography } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles, Theme, useTheme } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -9,6 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Utils from '../../../utils/utils';
+import { useWindowSize } from '../resize/resizeDetector';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -30,6 +32,7 @@ const useStyles = makeStyles((theme: Theme) =>
  */
 function DisplaySimpleList({ ...props }) {
     const classes = useStyles(useTheme());
+    const size = useWindowSize();
 
     const width = props.width;
     const title = props.title;
@@ -54,6 +57,7 @@ function DisplaySimpleList({ ...props }) {
     };
 
     return (
+        size.width > 600 ?
         <div style={{ width: `${width}` }}>
             {title && <div className={classes.title}>{title}</div>}
             <Paper style={{ width: `${width}` }}>
@@ -106,7 +110,37 @@ function DisplaySimpleList({ ...props }) {
                 />
             </Paper>
 
-        </ div>
+        </ div> :
+        <div>
+            {
+                list.map((line: any, index: number) => {
+                    return (
+                    <Card key={index} style={{marginBottom: '1em'}}>
+                        <CardContent>
+                            {
+                                keys.map((key: string, i: number) => {
+
+                                    if (sizes) {
+                                        sizeColumns = sizes[i];
+                                    }
+
+                                    return (
+                                        <div key={i}>
+                                            <Typography variant='subtitle2'>
+                                                {Utils.firstUppercase(key)}
+                                            </Typography>
+                                            <Typography variant='subtitle1'  color='textSecondary'>
+                                                {line[key]}
+                                            </Typography>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </CardContent>
+                  </Card>);
+                })
+            }
+        </div>
     );
 }
 
